@@ -14,12 +14,12 @@ public class board {
 	//                 'K' king
 	// uppercase for white peaces and lowercase for black peaces
 	
-	private char map[][] = new char[settings.BOARD_SIZE][settings.BOARD_SIZE];
+	char map[][] = new char[settings.BOARD_SIZE][settings.BOARD_SIZE];
 	
 	// if moved[x][y] = 0 => the piece hasn't been moved
 	// else => the piece has been moved 
 	
-	private boolean moved[][] = new boolean[settings.BOARD_SIZE][settings.BOARD_SIZE];
+	boolean moved[][] = new boolean[settings.BOARD_SIZE][settings.BOARD_SIZE];
 	
 	// a list of the last moves done on the table
 	
@@ -62,8 +62,22 @@ public class board {
 		
 	}
 	
+	// Clears all the moves in the vector $lastMOves
+	
 	void clearMoves() {
-		
+		// TODO
+	}
+
+	// changes the color of the pieces and flips the board
+	// ATENTION: as seeing the board from the oppeonent's point of view
+	
+	public void flip() {
+		// TODO
 	}
 	
+	// Executes the move $x on the board, !!!without flipping it!!!
+	
+	public void move( move x ) {
+		// TODO
+	}
 }

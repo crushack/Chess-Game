@@ -4,18 +4,22 @@ import java.awt.Point;
 
 public class move {
 
-	// peace type (eg. 'P' pwan, 
+	// peace type (eg. 'P' pawn, 
 	//                 'R' rook, 
 	//                 'N' knight, 
 	//                 'B' bishop, 
 	//                 'Q' queen,
 	//                 'K' king
 	// uppercase for white peaces and lowercase for black peaces
-	private char type; 
+	protected char type; 
 	
 	// start and end positions for the move
-	private Point currentPosition = new Point();
-	private Point destinationPosition = new Point();
+	protected Point currentPosition = new Point();
+	protected Point destinationPosition = new Point();
+	
+	// dummy @constructor
+	
+	public move() {}
 	
 	// @constructor 
 	
@@ -79,7 +83,7 @@ public class move {
 		destinationPosition.y = y;
 	}
 	
-	// function returns the move as needed for communication with WinBoard
+	// method returns the move as needed for communication with WinBoard
 	//   documentation: http://www.gnu.org/software/xboard/engine-intf.html#8
 	
 	public static String getOutputMove( String Algmove ) {
@@ -97,12 +101,40 @@ public class move {
 		return new String();
 	}
 	
-	// function validates move written in Algebraic Notation
+	// method validates move written in Algebraic Notation
+	// verify if move doesn't violate any of the chess laws
 	
-	public static boolean validateMove( String s ) {
+	public static boolean isvalid( String s ) {
 		// TODO
 		return true;
 	}
 	
+	// convert Algebraic Notation string to move
+	// documentation:
+	// 		http://en.wikipedia.org/wiki/Algebraic_notation_(chess)
+	//   	http://en.wikipedia.org/wiki/Chess_notation
+	
+	public static move convertAlgebraic( String s ) {
+		// TODO
+		return new move();
+	}
+	
+	// convert WinBoard Notation string to move
+	// documentation:
+	//		- move section from:
+	//			~ http://www.gnu.org/software/xboard/engine-intf.html#8
+	
+	public static move convertOutput( String s ) {
+		// TODO
+		return new move();
+	}
+	
+	// translates a move
+	// it is the same as seeing the table from the other side
+	
+	public static move translate( move m ) {
+		// TODO
+		return new move();
+	}
 	
 }
