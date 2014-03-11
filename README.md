@@ -22,3 +22,35 @@ git push
 After saving your work in your own repository, you need to add it to the main project.
 You are doing that by going to: https://github.com/<username>/Chess-Game
 and clicking on **Pull Requests** and then **New pull request**
+
+# Creating branches for safely making changes #
+
+This technique is particularly good when you're trying new things and don't want to mess up a currently working state of the project
+
+ - create a branch `git checkout -v my-branch-name` and work on it ( you can add as many commits as you want )
+ - push to that branch `git push origin my-branch-name`
+ - send pull request from `<username>:my-branch-name to Chess-Game:develop`
+
+# Rebasing with master branch #
+
+```bash
+$ # Add kuende remote if you do not already have it
+$ git remote add kuende git@github.com:kuende/kuende.git
+$ git stash save # stashes currently unstaged changes
+$ git checkout master # change branch to master
+$ git pull kuende master # get any new changes from master branch
+$ git checkout my-branch-name
+$ git rebase master
+```
+
+# Rebasing with develop branch #
+
+```bash
+$ # Add kuende remote if you do not already have it
+$ git remote add kuende git@github.com:kuende/kuende.git
+$ git stash save # stashes currently unstaged changes
+$ git checkout develop # change branch to develop
+$ git pull kuende develop # get any new changes from main develop branch
+$ git checkout my-branch-name
+$ git rebase develop
+```
