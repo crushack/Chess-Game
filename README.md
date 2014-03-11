@@ -33,8 +33,8 @@ This technique is particularly good when you're trying new things and don't want
 # Rebasing with master branch #
 
 ```bash
-$ # Add kuende remote if you do not already have it
-$ git remote add kuende git@github.com:kuende/kuende.git
+$ # Add Chess-Game remote if you do not already have it
+$ git remote add Chess-Game git@github.com:crushack/Chess-Game.git
 $ git stash save # stashes currently unstaged changes
 $ git checkout master # change branch to master
 $ git pull kuende master # get any new changes from master branch
@@ -45,8 +45,8 @@ $ git rebase master
 # Rebasing with develop branch #
 
 ```bash
-$ # Add kuende remote if you do not already have it
-$ git remote add kuende git@github.com:kuende/kuende.git
+$ # Add Chess-Game remote if you do not already have it
+$ git remote add Chess-Game git@github.com:crushack/Chess-Game.git
 $ git stash save # stashes currently unstaged changes
 $ git checkout develop # change branch to develop
 $ git pull kuende develop # get any new changes from main develop branch
