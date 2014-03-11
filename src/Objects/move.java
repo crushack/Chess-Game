@@ -52,7 +52,7 @@ public class move {
 	//		http://en.wikipedia.org/wiki/Algebraic_notation_(chess)
 	//		http://en.wikipedia.org/wiki/Chess_notation
 	
-	public String getMove( board b ) {
+	public String getMove() {
 		// TODO
 		return new String();
 	}
@@ -83,7 +83,7 @@ public class move {
 		destinationPosition.y = y;
 	}
 	
-	// method returns the move as needed for communication with WinBoard
+	// method converts an Algebraic Notation String to a WinBoard String
 	//   documentation: http://www.gnu.org/software/xboard/engine-intf.html#8
 	
 	public static String getOutputMove( String Algmove ) {
@@ -91,7 +91,7 @@ public class move {
 		return new String();
 	}
 	
-	// method converts from algebraic notation to WinBoard notation
+	// method converts from WinBoard notation to Algebraic Notation
 	// documentation:
 	//		- move section from:
 	//			~ http://www.gnu.org/software/xboard/engine-intf.html#8
