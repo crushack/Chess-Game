@@ -9,7 +9,6 @@ After that, open it with Eclipse:
 
 # Saving your work to github #
 
-You can do a lot of stuff 
 ```
 git add .
 git commit -m '<comment>'
