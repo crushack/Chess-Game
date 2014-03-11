@@ -17,32 +17,32 @@ import java.util.ArrayList;
 public class helper {
 	
 	public static ArrayList<move> getPawnMoves( board b, Point pos ) {
-		
+		// TODO
 		return new ArrayList<move>();
 	}
 	
 	public static ArrayList<move> getRookMoves( board b, Point pos ) {
-		
+		// TODO
 		return new ArrayList<move>();
 	}
 	
 	public static ArrayList<move> getKnightMoves( board b, Point pos ) {
-		
+		// TODO
 		return new ArrayList<move>();
 	}
 	
 	public static ArrayList<move> getBishopMoves( board b, Point pos ) {
-		
+		// TODO
 		return new ArrayList<move>();
 	}
 	
 	public static ArrayList<move> getQueenMoves( board b, Point pos ) {
-		
+		// TODO
 		return new ArrayList<move>();
 	}
 	
 	public static ArrayList<move> getKingMoves( board b, Point pos) {
-		
+		// TODO
 		return new ArrayList<move>();
 	}
 }

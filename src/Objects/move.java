@@ -52,4 +52,12 @@ public class move {
 		// TODO
 		return new String();
 	}
+	
+	// function returns the move as needed for communication with WinBoard
+	//   documentation: http://www.gnu.org/software/xboard/engine-intf.html#8
+	
+	public static String getOutputMove( board b ) {
+		// TODO
+		return new String();
+	}
 }
