@@ -1,4 +1,3 @@
-
 # Instalation Guide #
 
 Fork the repository then do:
@@ -23,7 +22,7 @@ After saving your work in your own repository, you need to add it to the main pr
 You are doing that by going to: https://github.com/<username>/Chess-Game
 and clicking on **Pull Requests** and then **New pull request**
 
-# Creating branches for safely making changes #
+## Creating branches for safely making changes ##
 
 This technique is particularly good when you're trying new things and don't want to mess up a currently working state of the project
 
