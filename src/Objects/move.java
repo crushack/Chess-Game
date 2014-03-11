@@ -5,7 +5,7 @@ import java.awt.Point;
 public class move {
 
 	// peace type (eg. 'P' pwan, 
-	//				   'R' rook, 
+	//                 'R' rook, 
 	//                 'N' knight, 
 	//                 'B' bishop, 
 	//                 'Q' queen,
