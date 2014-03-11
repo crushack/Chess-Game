@@ -53,10 +53,36 @@ public class move {
 		return new String();
 	}
 	
+	// sets the source position to ps
+	
+	public void setSource( Point ps ) {
+		currentPosition = ps;
+	}
+	
+	// sets the source position to (x, y)
+	
+	public void setSource( int x, int y ) {
+		currentPosition.x = x;
+		currentPosition.y = y;
+	}
+		
+	// sets the destination position to ps
+	
+	public void setDest( Point ps ) {
+		destinationPosition = ps;
+	}
+	
+	// sets the destination position to (x, y)
+	
+	public void setDest( int x, int y ) {
+		destinationPosition.x = x;
+		destinationPosition.y = y;
+	}
+	
 	// function returns the move as needed for communication with WinBoard
 	//   documentation: http://www.gnu.org/software/xboard/engine-intf.html#8
 	
-	public static String getOutputMove( board b ) {
+	public static String getOutputMove( String Algmove ) {
 		// TODO
 		return new String();
 	}
