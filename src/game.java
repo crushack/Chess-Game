@@ -26,7 +26,7 @@ public class game {
 	
 	public game(BufferedReader stdin) {
 		this.stdin = stdin;
-		b = new board();
+		b = new board(board.initialState());
 	}
 	
 	// this method executes the commands read from stdin and then executes them
