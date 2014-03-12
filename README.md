@@ -9,10 +9,10 @@ After that, open it with Eclipse:
 
 # Saving your work to github #
 
-```
-git add .
-git commit -m '<comment>'
-git push
+```bash
+$ git add .
+$ git commit -m '<comment>'
+$ git push
 ```
 
 # Sending a pull Request #
