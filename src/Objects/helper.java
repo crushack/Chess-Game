@@ -24,8 +24,6 @@ public class helper {
 		// TODO
 		
 		// visibility test ( erase it when implementing method )
-		b.map[0][0] = 'a';
-		b.moved[0][0] = true;
 		return new ArrayList<move>();
 	}
 	

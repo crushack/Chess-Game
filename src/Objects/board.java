@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class board {
 
 	// represents the positioning of the pieces on the board
-	// peace type (eg. 'P' pwan, 
+	// peace type (eg. 'P' pawn, 
 	//                 'R' rook, 
 	//                 'N' knight, 
 	//                 'B' bishop, 
@@ -14,7 +14,7 @@ public class board {
 	//                 'K' king
 	// uppercase for white peaces and lowercase for black peaces
 	
-	char map[][] = new char[settings.BOARD_SIZE][settings.BOARD_SIZE];
+	String [] map = new String[ settings.BOARD_SIZE ];
 	
 	// if moved[x][y] = 0 => the piece hasn't been moved
 	// else => the piece has been moved 
@@ -34,7 +34,7 @@ public class board {
 	// @constructor 
 	// create board from 8x8 char matrix
 	
-	public board ( char map[][] ) {
+	public board ( String [] map ) {
 		setBoard( map );
 	}
 	
@@ -54,11 +54,10 @@ public class board {
 	
 	// sets the state of the board custom state $map
 	
-	void setBoard( char map[][] ) {
+	void setBoard( String [] map ) {
 
 		for ( int i = 0; i < settings.BOARD_SIZE; ++ i ) 
-			for ( int j = 0; j < settings.BOARD_SIZE; ++ j)
-				this.map[i][j] = map[i][j];
+			this.map[i] = map[i];
 		
 	}
 	
@@ -79,5 +78,20 @@ public class board {
 	
 	public void move( move x ) {
 		// TODO
+	}
+	
+	public static String[] initialState() {
+		String [] map = new String[settings.BOARD_SIZE];
+		
+		map[0] = "rnbkqbnr";
+		map[1] = "pppppppp";
+		map[2] = "        ";
+		map[3] = "        ";
+		map[4] = "        ";
+		map[5] = "        ";
+		map[6] = "PPPPPPPP";
+		map[7] = "RNBKQBNR";
+		
+		return map;
 	}
 }
