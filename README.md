@@ -36,7 +36,7 @@ $ # Add Chess-Game remote if you do not already have it
 $ git remote add Chess-Game git@github.com:crushack/Chess-Game.git
 $ git stash save # stashes currently unstaged changes
 $ git checkout master # change branch to master
-$ git pull kuende master # get any new changes from master branch
+$ git pull Chess-Game master # get any new changes from master branch
 $ git checkout my-branch-name
 $ git rebase master
 ```
@@ -48,7 +48,7 @@ $ # Add Chess-Game remote if you do not already have it
 $ git remote add Chess-Game git@github.com:crushack/Chess-Game.git
 $ git stash save # stashes currently unstaged changes
 $ git checkout develop # change branch to develop
-$ git pull kuende develop # get any new changes from main develop branch
+$ git pull Chess-Game develop # get any new changes from main develop branch
 $ git checkout my-branch-name
 $ git rebase develop
 ```
