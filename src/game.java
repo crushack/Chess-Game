@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import Objects.board;
+import Objects.move;
 import settings.settings;
 
 // game class
@@ -10,7 +11,7 @@ import settings.settings;
 public class game {
 
 	private BufferedReader stdin;
-	private board b;
+	private board gameBoard;
 	
 	private static final int ERR_WRONG_EVENT = -1;
 	
@@ -26,7 +27,7 @@ public class game {
 	
 	public game(BufferedReader stdin) {
 		this.stdin = stdin;
-		b = new board(board.initialState());
+		gameBoard = new board(board.initialState());
 	}
 	
 	// this method executes the commands read from stdin and then executes them
@@ -36,6 +37,7 @@ public class game {
 		
 		if ( event.startsWith("xboard") ) {
 			// TODO: actually resolve event
+			System.out.println("Received!!");
 			return EVENT_XBOARD;
 		} else if ( event.startsWith("new")) {
 			// TODO: actually resolve event
@@ -60,9 +62,16 @@ public class game {
 			return EVENT_RESIGN;
 		} else if ( event.startsWith("move")) {
 			// TODO: actually resolve event
+			System.out.println(event.substring(5));
+			
+			move nextMove = move.convertOutput(event.substring(5));
+			gameBoard.flip();
+			gameBoard.move(nextMove);
+			gameBoard.flip();
 			return EVENT_MOVE;
 		}
-		
+	
+		System.out.println("Error (ambiguous move): " + event);
 		return ERR_WRONG_EVENT;
 	}
 	

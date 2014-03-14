@@ -17,6 +17,7 @@ public class move {
 	protected Point currentPosition = new Point();
 	protected Point destinationPosition = new Point();
 	
+	protected char promotion = '-';
 	// dummy @constructor
 	
 	public move() {}
@@ -125,8 +126,29 @@ public class move {
 	//			~ http://www.gnu.org/software/xboard/engine-intf.html#8
 	
 	public static move convertOutput( String s ) {
-		// TODO
-		return new move();
+		move nextMove = new move();
+		int index;
+		
+		for ( index = 0; s.charAt(index) == ' '; ++ index);
+		
+		// castling move
+		if ( s.charAt(index) == 'O' && s.startsWith("O-O-O")) {
+			return convertOutput("e1c1");
+		} else if ( s.charAt(index) == 'O' ) {
+			return convertOutput("e1g1");
+		}
+		
+		nextMove.setSource(s.charAt(index) - 'a', s.charAt(index + 1) - '1'); 
+		index += 2;
+		
+		nextMove.setDest(s.charAt(index) - 'a', s.charAt(index + 1) - '1');
+		
+		if ( s.charAt(index + 1) == '8' && s.charAt(index - 1) == '7' && 
+		    (s.charAt(index + 2) == 'q' || s.charAt(index + 2) == 'n' || 
+		     s.charAt(index + 2) == 'r' || s.charAt(index + 2) == 'b' ))
+		     nextMove.promotion = s.charAt(index + 2);
+		
+		return nextMove;
 	}
 	
 	// translates a move
