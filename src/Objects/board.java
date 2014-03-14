@@ -76,27 +76,26 @@ public class board {
 		
 		// WARNING: TODO: This implementation supports optimization as it will be used a lot
 		
-		String temp;
-		
-		// flipping the board
+		char [][] aux = new char [settings.BOARD_SIZE][];
 		for ( int i = 0; i < settings.BOARD_SIZE; ++ i)
-			map[i] = new StringBuilder(map[i]).reverse().toString();
-		for ( int i = 0; i < settings.BOARD_SIZE / 2; ++ i) {
-			temp = map[i];
-			map[i] = map[ settings.BOARD_SIZE - i - 1];
-			map[ settings.BOARD_SIZE - i - 1] = temp;
-		}
+			aux[i] = map[i].toCharArray();
 		
-		// flipping pieces case
-		for ( int i = 0; i < settings.BOARD_SIZE; ++ i) {
-			char[] line = map[i].toCharArray();
+		for ( int i = 0; i < settings.BOARD_SIZE; ++ i)
+			for ( int j = 0; j < settings.BOARD_SIZE / 2; ++ j) {
+				char temp = aux[i][j];
+				aux[i][j] = aux[ settings.BOARD_SIZE - i - 1 ][ settings.BOARD_SIZE - j - 1];
+				aux[ settings.BOARD_SIZE - i - 1 ][ settings.BOARD_SIZE - j - 1] = temp;
+			}
+		
+		for ( int i = 0; i < settings.BOARD_SIZE; ++ i)
 			for ( int j = 0; j < settings.BOARD_SIZE; ++ j)
-				if ( Character.isLowerCase(line[j]) )
-						line[j] = Character.toUpperCase(line[j]);
-				else 
-						line[j] = Character.toLowerCase(line[j]);
-			map[i] = new String(line);
-		}
+				if ( Character.isLowerCase(aux[i][j]) )
+					aux[i][j] = Character.toUpperCase(aux[i][j]);
+				else
+					aux[i][j] = Character.toLowerCase(aux[i][j]);
+		
+		for ( int i = 0; i < settings.BOARD_SIZE; ++ i)
+			map[i] = new String(aux[i]);
 	}
 	
 	// Executes the move $x on the board, !!!without flipping it!!!
