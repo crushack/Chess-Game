@@ -1,6 +1,8 @@
 package Objects;
 
 import settings.settings;
+
+import java.awt.Point;
 import java.util.ArrayList;
 
 public class board {
@@ -19,11 +21,11 @@ public class board {
 	// if moved[x][y] = 0 => the piece hasn't been moved
 	// else => the piece has been moved 
 	
-	boolean moved[][] = new boolean[settings.BOARD_SIZE][settings.BOARD_SIZE];
+	protected boolean moved[][] = new boolean[settings.BOARD_SIZE][settings.BOARD_SIZE];
 	
 	// a list of the last moves done on the table
 	
-	move [] lastMoves = new move[settings.NO_REMEMBERED_MOVES];
+	protected move [] lastMoves = new move[settings.NO_REMEMBERED_MOVES];
 	
 	// @constructor 
 	
@@ -87,13 +89,13 @@ public class board {
 		
 		// flipping pieces case
 		for ( int i = 0; i < settings.BOARD_SIZE; ++ i) {
-			char [] line = map[i].toCharArray();
+			char[] line = map[i].toCharArray();
 			for ( int j = 0; j < settings.BOARD_SIZE; ++ j)
 				if ( Character.isLowerCase(line[j]) )
 						line[j] = Character.toUpperCase(line[j]);
 				else 
 						line[j] = Character.toLowerCase(line[j]);
-			map[i] = line.toString();
+			map[i] = new String(line);
 		}
 	}
 	
@@ -101,20 +103,48 @@ public class board {
 	
 	public void move( move x ) {
 		// TODO
+		
+		Point source = x.getSource();
+		Point dest = x.getDest();
+		
+		//System.out.println(source.toString());
+		//System.out.println(dest.toString());
+		
+		char[] line = map[ dest.x ].toCharArray();
+		line[ dest.y ] = map[ source.x ].charAt(source.y);
+		
+		map[ dest.x ] = new String(line);
+		
+		line = map[ source.x ].toCharArray();
+		line[ source.y ] = settings.FREE_CHELL;
+		
+		map[ source.x ] = new String(line);
 	}
 	
 	public static String[] initialState() {
 		String [] map = new String[settings.BOARD_SIZE];
 		
-		map[0] = "rnbkqbnr";
-		map[1] = "pppppppp";
+		map[0] = "RNBQKBNR";
+		map[1] = "PPPPPPPP";
 		map[2] = "        ";
 		map[3] = "        ";
 		map[4] = "        ";
 		map[5] = "        ";
-		map[6] = "PPPPPPPP";
-		map[7] = "RNBKQBNR";
+		map[6] = "pppppppp";
+		map[7] = "rnbqkbnr";
 		
 		return map;
+	}
+	
+	public static void printBoardReverse( board b ) {
+		
+		for ( int i = 0; i < settings.BOARD_SIZE; ++ i)
+			System.out.println(b.map[i]);
+	}
+	
+	public static void printBoard( board b ) {
+		
+		for ( int i = settings.BOARD_SIZE - 1; i >= 0; -- i)
+			System.out.println(b.map[i]);
 	}
 }

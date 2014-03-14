@@ -35,6 +35,7 @@ public class game {
 	
 	public int eventParse( String event ) {
 		
+		//System.out.println(event);
 		if ( event.startsWith("xboard") ) {
 			// TODO: actually resolve event
 			System.out.println("Received!!");
@@ -65,9 +66,9 @@ public class game {
 			System.out.println(event.substring(5));
 			
 			move nextMove = move.convertOutput(event.substring(5));
-			gameBoard.flip();
 			gameBoard.move(nextMove);
 			gameBoard.flip();
+			//board.printBoard(gameBoard);
 			return EVENT_MOVE;
 		}
 	

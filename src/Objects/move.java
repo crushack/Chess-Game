@@ -84,6 +84,16 @@ public class move {
 		destinationPosition.y = y;
 	}
 	
+	public Point getSource() {
+		
+		return currentPosition;
+	}
+	
+	public Point getDest() {
+		
+		return destinationPosition;
+	}
+	
 	// method converts an Algebraic Notation String to a WinBoard String
 	//   documentation: http://www.gnu.org/software/xboard/engine-intf.html#8
 	
@@ -138,16 +148,18 @@ public class move {
 			return convertOutput("e1g1");
 		}
 		
-		nextMove.setSource(s.charAt(index) - 'a', s.charAt(index + 1) - '1'); 
+		nextMove.setSource(s.charAt(index + 1) - '1', s.charAt(index) - 'a'); 
 		index += 2;
 		
-		nextMove.setDest(s.charAt(index) - 'a', s.charAt(index + 1) - '1');
+		nextMove.setDest(s.charAt(index + 1) - '1', s.charAt(index) - 'a');
 		
 		if ( s.charAt(index + 1) == '8' && s.charAt(index - 1) == '7' && 
 		    (s.charAt(index + 2) == 'q' || s.charAt(index + 2) == 'n' || 
 		     s.charAt(index + 2) == 'r' || s.charAt(index + 2) == 'b' ))
 		     nextMove.promotion = s.charAt(index + 2);
 		
+		//System.out.println(nextMove.getSource().toString());
+		//System.out.println(nextMove.getDest().toString());
 		return nextMove;
 	}
 	

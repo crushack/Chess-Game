@@ -20,44 +20,42 @@ public class helper {
 	
 	// returns a list of valid moves for a pawn in position pos
 	
-	public static ArrayList<move> getPawnMoves( board b, Point pos ) {
+	public static ArrayList<move> getPawnMoves( String [] map , boolean [][] moved, Point pos ) {
 		// TODO
-		
-		// visibility test ( erase it when implementing method )
 		return new ArrayList<move>();
 	}
 	
 	// returns a list of valid moves for a rook in position pos
 	
-	public static ArrayList<move> getRookMoves( board b, Point pos ) {
+	public static ArrayList<move> getRookMoves( String [] map , boolean [][] moved, Point pos ) {
 		// TODO
 		return new ArrayList<move>();
 	}
 	
 	// returns a list of valid moves for a knight in position pos
 	
-	public static ArrayList<move> getKnightMoves( board b, Point pos ) {
+	public static ArrayList<move> getKnightMoves( String [] map , boolean [][] moved, Point pos ) {
 		// TODO
 		return new ArrayList<move>();
 	}
 	
 	// returns a list of valid moves for a bishop in position pos
 	
-	public static ArrayList<move> getBishopMoves( board b, Point pos ) {
+	public static ArrayList<move> getBishopMoves( String [] map , boolean [][] moved, Point pos ) {
 		// TODO
 		return new ArrayList<move>();
 	}
 	
 	// returns a list of valid moves for a queen in position pos
 	
-	public static ArrayList<move> getQueenMoves( board b, Point pos ) {
+	public static ArrayList<move> getQueenMoves( String [] map , boolean [][] moved, Point pos ) {
 		// TODO
 		return new ArrayList<move>();
 	}
 	
 	// returns a list of valid moves for a king in position pos
 	
-	public static ArrayList<move> getKingMoves( board b, Point pos) {
+	public static ArrayList<move> getKingMoves( String [] map , boolean [][] moved, Point pos ) {
 		// TODO
 		return new ArrayList<move>();
 	}
