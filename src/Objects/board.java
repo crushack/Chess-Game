@@ -49,9 +49,39 @@ public class board {
 	//		ArrayList<move> getQueenMoves( board b, Point position )
 	//		ArrayList<move> getKingMoves( board b, Point position )
 	
-	ArrayList<move> getPossibleMoves() {
-		// TODO
-		return new ArrayList<move>();
+	ArrayList<move> getPossibleMoves( int color ) {
+		
+		ArrayList<move> possibleMoves = new ArrayList<move>();
+		
+		for ( int i = 0; i < settings.BOARD_SIZE; ++ i)
+			for ( int j = 0; j < settings.BOARD_SIZE; ++ j) {
+				char piece = map[i].charAt(j);
+				if ( piece == 'P' && ( color == 0 ))
+					possibleMoves.addAll(helper.getPawnMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'R' && ( color == 0))
+					possibleMoves.addAll(helper.getRookMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'N' && ( color == 0))
+					possibleMoves.addAll(helper.getKnightMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'B' && ( color == 0))
+					possibleMoves.addAll(helper.getBishopMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'Q' && ( color == 0))
+					possibleMoves.addAll(helper.getQueenMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'K' && ( color == 0))
+					possibleMoves.addAll(helper.getKingMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'p' && ( color == 1 ))
+					possibleMoves.addAll(helper.getPawnMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'r' && ( color == 1))
+					possibleMoves.addAll(helper.getRookMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'n' && ( color == 1))
+					possibleMoves.addAll(helper.getKnightMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'b' && ( color == 1))
+					possibleMoves.addAll(helper.getBishopMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'q' && ( color == 1))
+					possibleMoves.addAll(helper.getQueenMoves(map, moved, new Point(i,j)));
+				else if ( piece == 'k' && ( color == 1))
+					possibleMoves.addAll(helper.getKingMoves(map, moved, new Point(i,j)));
+			}
+		return possibleMoves;
 	}
 	
 	// sets the state of the board custom state $map
@@ -74,7 +104,7 @@ public class board {
 	
 	public void flip() {
 		
-		// WARNING: TODO: This implementation supports optimization as it will be used a lot
+		// WARNING: This implementation supports optimization as it will be used a lot
 		
 		char [][] aux = new char [settings.BOARD_SIZE][];
 		for ( int i = 0; i < settings.BOARD_SIZE; ++ i)
@@ -101,13 +131,9 @@ public class board {
 	// Executes the move $x on the board, !!!without flipping it!!!
 	
 	public void move( move x ) {
-		// TODO
 		
 		Point source = x.getSource();
 		Point dest = x.getDest();
-		
-		//System.out.println(source.toString());
-		//System.out.println(dest.toString());
 		
 		char[] line = map[ dest.x ].toCharArray();
 		line[ dest.y ] = map[ source.x ].charAt(source.y);
