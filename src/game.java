@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import DAL.stdProtocol;
 import Objects.board;
 import Objects.move;
 import settings.settings;
@@ -25,9 +28,15 @@ public class game {
 	private static final int EVENT_RESIGN = 8;
 	private static final int EVENT_MOVE = 9;
 	
-	public game(BufferedReader stdin) {
+	private int color; 
+	
+	private PrintWriter fileLog;
+	
+	public game(BufferedReader stdin) throws IOException {
 		this.stdin = stdin;
 		gameBoard = new board(board.initialState());
+		fileLog = new PrintWriter(new FileWriter(settings.LOG_FILE,true));
+		color = 0;
 	}
 	
 	// This command will be sent once immediately after your engine process is started. 
@@ -36,7 +45,7 @@ public class game {
 	//	you must turn off the prompt and output a newline when the "xboard" command comes in.
 	
 	public int eventXBoard( String event ) {
-		System.out.println();
+		stdProtocol.message("");
 		return EVENT_XBOARD;
 	}
 	
@@ -69,21 +78,21 @@ public class game {
 	// Start thinking and eventually make a move.
 	
 	public int eventGo( String event ) {
-		
+		stdProtocol.message("e2e4");
 		return EVENT_GO;
 	}
 	
 	// Set White on move. Set the engine to play Black. Stop clocks.
 	
 	public int eventWhite( String event ) {
-	
+		color = 0;
 		return EVENT_WHITE;
 	}
 	
 	// Set Black on move. Set the engine to play White. Stop clocks.
 	
 	public int eventBlack( String event ) {
-		
+		color = 1;
 		return EVENT_BLACK;
 	}
 	
@@ -111,13 +120,15 @@ public class game {
 	
 	public int eventMove( String event ) {
 		
-		move nextMove = move.convertOutput(event.substring(5));
+		move nextMove = move.convertOutput(event);
 		gameBoard.move(nextMove);
 		gameBoard.flip();
+		
+		stdProtocol.message("move e7e5");
 		return EVENT_MOVE;
 	}
 	
-	// this method executes the commands read from stdin and then executes them
+	// this method executes the commands read from stdin 
 	
 	public int eventParse( String event ) {
 
@@ -137,10 +148,11 @@ public class game {
 			return eventQuit(event);
 		else if ( event.startsWith("resign"))
 			return eventResign(event);
-		else if ( event.startsWith("move"))
+		else if ( 'a' <= event.charAt(0) && event.charAt(0) <= 'h' &&
+				  '1' <= event.charAt(1) && event.charAt(1) <= '8' )
 			return eventMove(event);
 			
-		System.out.println("Error (ambiguous move): " + event);
+		stdProtocol.message("Error (ambiguous move): " + event);
 		return ERR_WRONG_EVENT;
 	}
 	
@@ -151,10 +163,12 @@ public class game {
 		int eventCode;
 		
 		while ( true ) {
-			String event = stdin.readLine();
+			String event = stdProtocol.getMessage(stdin, fileLog);
 			eventCode = eventParse(event);
 			if ( eventCode == EVENT_QUIT || eventCode == EVENT_NEW ) break;
 		}
+		
+		fileLog.close();
 		
 		if ( eventCode == EVENT_NEW ) 
 			return settings.NEW_GAME;

@@ -14,4 +14,5 @@ public class settings {
 	public static final int LAST_GAME = 0;
 	public static final int NEW_GAME = 1;
 	
+	public static final String LOG_FILE = "log.txt";
 }
