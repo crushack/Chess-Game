@@ -1,4 +1,4 @@
-# Instalation Guide #
+# Installation Guide #
 
 Fork the repository then do:
 ```
