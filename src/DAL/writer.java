@@ -1,14 +1,12 @@
 package DAL;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
 
 public class writer {
 
-	private FileOutputStream fos;
+	/*private FileOutputStream fos;
 	private FileChannel fc;
-	private int offset;
+	private int offset;*/
 	
 	public writer() {
 		

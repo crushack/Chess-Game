@@ -157,9 +157,6 @@ public class move {
 		    (s.charAt(index + 2) == 'q' || s.charAt(index + 2) == 'n' || 
 		     s.charAt(index + 2) == 'r' || s.charAt(index + 2) == 'b' ))
 		     nextMove.promotion = s.charAt(index + 2);
-		
-		//System.out.println(nextMove.getSource().toString());
-		//System.out.println(nextMove.getDest().toString());
 		return nextMove;
 	}
 	
