@@ -109,7 +109,6 @@ public class game {
 	}
 	
 	
-	
 	public int eventMove( String event ) {
 		
 		move nextMove = move.convertOutput(event.substring(5));
