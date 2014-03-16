@@ -58,7 +58,7 @@ public class game {
 	// Remove any search depth limit previously set by the sd command.
 	
 	public int eventNew( String event ) {
-		
+		gameBoard = new board(board.initialState());
 		return EVENT_NEW;
 	}
 	
@@ -165,7 +165,7 @@ public class game {
 		while ( true ) {
 			String event = stdProtocol.getMessage(stdin, fileLog);
 			eventCode = eventParse(event);
-			if ( eventCode == EVENT_QUIT || eventCode == EVENT_NEW ) break;
+			if ( eventCode == EVENT_QUIT ) break;
 		}
 		
 		fileLog.close();
