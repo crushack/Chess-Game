@@ -45,7 +45,7 @@ public class game {
 	//	you must turn off the prompt and output a newline when the "xboard" command comes in.
 	
 	public int eventXBoard( String event ) {
-		stdProtocol.message("");
+		stdProtocol.message("", fileLog);
 		return EVENT_XBOARD;
 	}
 	
@@ -78,7 +78,7 @@ public class game {
 	// Start thinking and eventually make a move.
 	
 	public int eventGo( String event ) {
-		stdProtocol.message("e2e4");
+		stdProtocol.message("e2e4", fileLog);
 		return EVENT_GO;
 	}
 	
@@ -86,6 +86,7 @@ public class game {
 	
 	public int eventWhite( String event ) {
 		color = 0;
+		stdProtocol.message("e2e4", fileLog);
 		return EVENT_WHITE;
 	}
 	
@@ -124,7 +125,7 @@ public class game {
 		gameBoard.move(nextMove);
 		gameBoard.flip();
 		
-		stdProtocol.message("move e7e5");
+		stdProtocol.message("move e7e5", fileLog);
 		return EVENT_MOVE;
 	}
 	
@@ -152,7 +153,7 @@ public class game {
 				  '1' <= event.charAt(1) && event.charAt(1) <= '8' )
 			return eventMove(event);
 			
-		stdProtocol.message("Error (ambiguous move): " + event);
+		stdProtocol.message("Error (ambiguous move): " + event, fileLog);
 		return ERR_WRONG_EVENT;
 	}
 	

@@ -5,7 +5,7 @@ files := $(wildcard */*.java) $(wildcard */*/*.java)
 build: application.jar
 
 application.jar: $(files)
-	$(CC) cf $@ $^
+	$(CC) cfe $@ default.application $^
 
 clear:
 	rm application.jar

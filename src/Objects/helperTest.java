@@ -24,6 +24,13 @@ public class helperTest {
 	@Test
 	public void getQueenMoves() {
 		
+		board b =  new board(board.initialState());
+		
+		ArrayList<move> list = helper.getQueenMoves(b.map, b.moved, new Point(1,2));
+		
+		for ( move next : list ) {
+			System.out.println(next.getSource() + " " + next.getDest());
+		}
 	}
 
 }

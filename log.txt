@@ -1,0 +1,5 @@
+[Mon Mar 17 19:59:11 EET 2014]# move e2e4
+[Mon Mar 17 19:59:11 EET 2014]$ Error (ambiguous move): move e2e4
+[Mon Mar 17 19:59:15 EET 2014]# e2e4
+[Mon Mar 17 19:59:15 EET 2014]$ move e7e5
+[Mon Mar 17 19:59:18 EET 2014]# quit
