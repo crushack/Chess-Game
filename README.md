@@ -7,6 +7,12 @@ git clone https://github.com/<username>/Chess-Game
 After that, open it with Eclipse:
   File/Import.../General/Existing Projects into Workspace
 
+# Compilation #
+
+Open the project into the eclipse IDE.
+Compile it by accessing "File/Export.../Java/Runnable JAR file", then 
+follow the wizard's instructions
+
 # Saving your work to github #
 
 ```bash
