@@ -26,209 +26,220 @@ public class helper {
 	// returns a list of valid moves for a pawn in position pos
 	
 	public static ArrayList<move> getPawnMoves( String [] map , boolean [][] moved, Point pos ) {
-		// TODO
-                ArrayList<move> list = new ArrayList<move>();
-                char piece = map[pos.x].charAt(pos.y);
+		ArrayList<move> list = new ArrayList<move>();
+		char piece = map[pos.x].charAt(pos.y);
                 
-                //pt alb
-                if(piece == 'P'){
-                	
-                	if ( pos.x == 1 ) {
-                		if ( map[pos.x + 2].charAt(pos.y)== settings.FREE_CHELL )
-                			list.add(new move(new Point(pos.x, pos.y),
-                								new Point(pos.x + 2, pos.x)));
-                	}
-                	
-                    if(pos.x+1<settings.BOARD_SIZE){
-                        if(map[pos.x+1].charAt(pos.y) == ' '){
-                            //adaug la array list pozitia pos.x+1 pos.y
-                            list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y)));
-                        }
-                    }
-                    if(pos.x+1<settings.BOARD_SIZE && pos.y + 1 < settings.BOARD_SIZE){
-                            if(Character.isLowerCase(map[pos.x+1].charAt(pos.y+1))){
-                                //adaug la array
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y+1)));
-                            }
-                    }
-                    if(pos.x+1<settings.BOARD_SIZE && pos.y -1 >= 0){        
-                            if(Character.isLowerCase(map[pos.x+1].charAt(pos.y-1))){
-                                    //adaug la array
-                                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y-1)));
-                            }
-                    }
-                }
-                 
-                //pt negru
-                if(piece == 'p'){
-                	
-                	if ( pos.x == settings.BOARD_SIZE - 1 && 
-                			map[pos.x - 2].charAt(pos.y) == settings.FREE_CHELL )
-                		list.add(new move( new Point(pos.x, pos.y),
-                							new Point(pos.x -2, pos.y)));
-                	
-                    if(pos.x-1>=0){
-                        if(map[pos.x-1].charAt(pos.y) == ' '){
-                                //adaug la array list pozitia pos.x+1 pos.y
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y)));
-                        }
-                    }
-                    if(pos.x-1 >=0 && pos.y +1 < settings.BOARD_SIZE){
-                            if(map[pos.x-1].charAt(pos.y+1) != ' ' /*suficient?*/){
-                                    //adaug la array
-                                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y+1)));
-                            }
-                    }
-                    if(pos.x-1 >=0 && pos.y - 1 >= 0){        
-                            if(map[pos.x-1].charAt(pos.y-1) != ' ' /*suficient? cum vad ca nu e nimic acolo?*/){
-                                    //adaug la array
-                                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y-1)));
-                            }
-                    }
-                }
-               
-                return list;
+        // white piece
+        if(piece == 'P'){
+        	
+        	if ( pos.x == settings.BOARD_SIZE - 2 ) {
+        		// TODO: pawn promotion
+        	}
+        	
+	        // first move of a pawn
+	        if ( pos.x == 1 && map[pos.x + 2].charAt(pos.y)== settings.FREE_CHELL )
+			list.add(new move(new Point(pos.x, pos.y),
+	    					new Point(pos.x + 2, pos.x)));
+	    	
+	        if(pos.x + 1 < settings.BOARD_SIZE && 
+	        		map[pos.x+1].charAt(pos.y) == settings.FREE_CHELL )
+	            list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y)));
+	        
+	        if(pos.x+1<settings.BOARD_SIZE && pos.y + 1 < settings.BOARD_SIZE &&
+	               Character.isLowerCase(map[pos.x+1].charAt(pos.y+1)))
+	        	list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y+1)));
+	        
+	        if(pos.x+1<settings.BOARD_SIZE && pos.y -1 >= 0 &&
+	        		Character.isLowerCase(map[pos.x+1].charAt(pos.y-1)))
+	        	list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y-1)));
+        }
+     
+	    // black piece
+	    if(piece == 'p'){
+	    	
+	    	if ( pos.x == 1 ) {
+        		// TODO: pawn promotion
+        	}
+	    	
+	    	if ( pos.x == settings.BOARD_SIZE - 1 && 
+	    			map[pos.x - 2].charAt(pos.y) == settings.FREE_CHELL )
+	    		list.add(new move( new Point(pos.x, pos.y),
+	    							new Point(pos.x -2, pos.y)));
+	    	
+	        if(pos.x-1>=0 && map[pos.x-1].charAt(pos.y) == settings.FREE_CHELL)
+              	list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y)));
+	        
+	        if(pos.x-1 >=0 && pos.y +1 < settings.BOARD_SIZE && 
+	        		Character.isUpperCase(map[pos.x-1].charAt(pos.y+1)))
+                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y+1)));
+	        
+	        if(pos.x-1 >=0 && pos.y - 1 >= 0 &&
+	        		Character.isUpperCase(map[pos.x-1].charAt(pos.y-1)))
+                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y-1)));
+	    }
+	   
+	    return list;
 	}
 	
 	// returns a list of valid moves for a rook in position pos
 	
-	public static ArrayList<move> getRookMoves( String [] map , boolean [][] moved, Point pos ) {
-		// TODO 
-                ArrayList<move> list = new ArrayList<move>();
-                char piece = map[pos.x].charAt(pos.y);
-                //pt alb
-                if(piece == 'R'){
-                    int t = 0;
-                    int i = 1;
-                    /*sunt 4 cazuri la tura -> <- jos sus */
-                    while(t!=1 && pos.x+i < settings.BOARD_SIZE){
-                            if(map[pos.x+i].charAt(pos.y)!=' '){ 
-                                //adaug la miscari posibile
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
-                                i=i+1;
-                            }
-                            else { 
-                                // adaug la miscare posibila
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
-                                t=1;
-                            }    
-                    }
-                    t=0;
-                    i=1;
-                    
-                    while(t!=1 && pos.x-i >= 0){
-                        
-                            if(map[pos.x-i].charAt(pos.y)!=' '){ 
-                                //adaug la miscari posibile
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
-                                i=i+1;
-                            }
-                            else { 
-                                // adaug la miscare posibila
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
-                                t=1;
-                            }
-                    }
-                    t=0;
-                    i=1;
-                    
-                    while(t!=1 && pos.y-i >= 0){
-                        
-                            if(map[pos.x].charAt(pos.y-i)!=' '){ 
-                                //adaug la miscari posibile
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
-                                i=i+1;
-                            }
-                            else { 
-                                // adaug la miscare posibila
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
-                                t=1;
-                            }
-                    }
-                    t=0;
-                    i=1;
-                    
-                    while(t!=1 && pos.x+i < settings.BOARD_SIZE){
-                        
-                            if(map[pos.x+i].charAt(pos.y)!=' '){ 
-                                //adaug la miscari posibile
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
-                                i=i+1;
-                            }
-                            else { 
-                                // adaug la miscare posibila
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
-                                t=1;
-                            }
-                    }
-                }  
-                //pt negru
-                if(piece == 'r'){
-                    int t = 0;
-                    int i = 1;
-                    /*sunt 4 cazuri la tura -> <- jos sus */
-                    while(t!=1 && pos.x+i < settings.BOARD_SIZE){
-                            if(map[pos.x+i].charAt(pos.y)!=' '){ 
-                                //adaug la miscari posibile
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
-                                i=i+1;
-                            }
-                            else { 
-                                // adaug la miscare posibila
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
-                                t=1;
-                            }    
-                    }
-                    t=0;
-                    i=1;
-                    
-                    while(t!=1 && pos.x-i >= 0){
-                        
-                            if(map[pos.x-i].charAt(pos.y)!=' '){ 
-                                //adaug la miscari posibile
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
-                                i=i+1;
-                            }
-                            else { 
-                                // adaug la miscare posibila
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
-                                t=1;
-                            }
-                    }
-                    t=0;
-                    i=1;
-                    
-                    while(t!=1 && pos.y-i >= 0){
-                        
-                            if(map[pos.x].charAt(pos.y-i)!=' '){ 
-                                //adaug la miscari posibile
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
-                                i=i+1;
-                            }
-                            else { 
-                                // adaug la miscare posibila
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
-                                t=1;
-                            }
-                    }
-                    t=0;
-                    i=1;
-                    
-                    while(t!=1 && pos.x+i < settings.BOARD_SIZE){
-                        
-                            if(map[pos.x+i].charAt(pos.y)!=' '){ 
-                                //adaug la miscari posibile
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
-                                i=i+1;
-                            }
-                            else { 
-                                // adaug la miscare posibila
-                                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
-                                t=1;
-                            }
-                    }
-                }  
-		return list;
+	public static ArrayList<move> getRookMoves( String [] map , boolean [][] moved, Point pos ) { 
+        ArrayList<move> list = new ArrayList<move>();
+        char piece = map[pos.x].charAt(pos.y);
+        
+        // white piece
+        if(piece == 'R'){
+        	
+            int t = 0;
+            int i = 1;
+            
+            // trying to move upwards
+            while(t!=1 && pos.x+i < settings.BOARD_SIZE){
+            	
+	    		// it might need to check if map[pos.x+i][pos.y] == ' '
+	            if(Character.isLowerCase(map[pos.x+i].charAt(pos.y))){
+	                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
+	                t = 1;
+	            }
+	            else if ( map[pos.x+i].charAt(pos.y) == settings.FREE_CHELL ){
+	                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
+	                i = i + 1;
+	            }    
+	            else 
+	            	t = 1;
+            }
+            
+            t=0;
+            i=1;
+            
+            // trying to move downwards
+            while(t!=1 && pos.x-i >= 0){
+                
+	            if(Character.isLowerCase(map[pos.x-i].charAt(pos.y))){
+	                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
+	                t = 1;
+	            }
+	            else if ( map[pos.x-i].charAt(pos.y) == settings.FREE_CHELL ){
+	                list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
+	                i = i + 1;
+	            }
+	            else
+	            	t = 1;
+            }
+            
+            t=0;
+            i=1;
+            
+            // trying to move leftwards
+            while(t!=1 && pos.y-i >= 0){
+                
+                if(Character.isLowerCase(map[pos.x].charAt(pos.y-i))){
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
+                    t = 1;
+                }
+                else if ( map[pos.x].charAt(pos.y-i) == settings.FREE_CHELL ){
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
+                    i = i + 1;
+                }
+                else 
+                	t = 1;
+            }
+            
+            t=0;
+            i=1;
+            
+            // trying to move rightwards
+            while(t!=1 && pos.y+i < settings.BOARD_SIZE){
+                
+                if(Character.isLowerCase(map[pos.x].charAt(pos.y + i))){
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y + i)));
+                    t = 1;
+                }
+                else if ( map[pos.x].charAt(pos.y + i) == settings.FREE_CHELL ){ 
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y + i)));
+                    i = i + 1;
+                }
+                else 
+                	t = 1;
+            }
+        }  
+        
+        // black piece
+        if(piece == 'r'){
+        	
+            int t = 0;
+            int i = 1;
+            
+            // trying to move downwards ( change of perspective )
+            while(t!=1 && pos.x+i < settings.BOARD_SIZE){
+            	
+                if(Character.isUpperCase(map[pos.x+i].charAt(pos.y))) {
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
+                    t = 1;
+                }
+                else if ( map[pos.x+i].charAt(pos.y) == settings.FREE_CHELL ){ 
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
+                    i = i + 1;
+                } else 
+                	t = 1;
+            }
+            
+            t=0;
+            i=1;
+            
+            // trying to move upwards ( change of perspective )
+            while(t!=1 && pos.x-i >= 0){
+                
+                if(Character.isUpperCase(map[pos.x-i].charAt(pos.y))){ 
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
+                    t = 1;
+                }
+                else if ( map[pos.x-i].charAt(pos.y) == settings.FREE_CHELL ) {
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
+                    i = i + 1;
+                }
+                else
+                	t = 1;
+            }
+            
+            t=0;
+            i=1;
+            
+            // trying to move rightwards ( change of perspective )
+            while(t!=1 && pos.y-i >= 0){
+                
+                if(Character.isUpperCase(map[pos.x].charAt(pos.y-i))){ 
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
+                    t = 1;
+                }
+                else if ( map[pos.x].charAt(pos.y-i) == settings.FREE_CHELL ){
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
+                    i = i + 1;
+                }
+                else
+                	t = 1;
+            }
+            
+            t=0;
+            i=1;
+            
+            // trying to move leftwards ( change of perspective )
+            while(t!=1 && pos.y + i < settings.BOARD_SIZE){
+                
+                if(Character.isUpperCase(map[pos.x].charAt(pos.y + i))){
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y + i)));
+                    t = 1;
+                }
+                else if ( map[pos.x].charAt(pos.y + i) == settings.FREE_CHELL ){
+                    list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y + i)));
+                    i = i + 1;
+                }
+                else
+                	t = 1;
+            }
+        }  
+        
+        return list;
 	}
 	
 	// returns a list of valid moves for a knight in position pos
@@ -339,7 +350,7 @@ public class helper {
                     i = 1;
                     /*sunt 4 cazuri la nebun 4 diagonale */
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y+i < settings.BOARD_SIZE){
-                            if(map[pos.x+i].charAt(pos.y+i)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y+i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y+i)));
                                 i=i+1;
@@ -355,7 +366,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y-i > 0){
-                            if(map[pos.x+i].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y-i)));
                                 i=i+1;
@@ -371,7 +382,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x-i > 0 && pos.y-i > 0){
-                            if(map[pos.x-i].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y-i)));
                                 i=i+1;
@@ -387,7 +398,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x-i > 0 && pos.y+i < settings.BOARD_SIZE ){
-                            if(map[pos.x-i].charAt(pos.y+i)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y+i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y+i)));
                                 i=i+1;
@@ -406,7 +417,7 @@ public class helper {
                     i = 1;
                     /*sunt 4 cazuri la nebun 4 diagonale */
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y+i < settings.BOARD_SIZE){
-                            if(map[pos.x+i].charAt(pos.y+i)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y+i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y+i)));
                                 i=i+1;
@@ -422,7 +433,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y-i > 0){
-                            if(map[pos.x+i].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y-i)));
                                 i=i+1;
@@ -438,7 +449,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x-i > 0 && pos.y-i > 0){
-                            if(map[pos.x-i].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y-i)));
                                 i=i+1;
@@ -454,7 +465,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x-i > 0 && pos.y+i < settings.BOARD_SIZE ){
-                            if(map[pos.x-i].charAt(pos.y+i)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y+i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y+i)));
                                 i=i+1;
@@ -485,7 +496,7 @@ public class helper {
                     i = 1;
                     /*sunt 4 cazuri la nebun 4 diagonale */
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y+i < settings.BOARD_SIZE){
-                            if(map[pos.x+i].charAt(pos.y+i)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y+i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y+i)));
                                 i=i+1;
@@ -501,7 +512,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y-i > 0){
-                            if(map[pos.x+i].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y-i)));
                                 i=i+1;
@@ -517,7 +528,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x-i > 0 && pos.y-i > 0){
-                            if(map[pos.x-i].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y-i)));
                                 i=i+1;
@@ -533,7 +544,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x-i > 0 && pos.y+i < settings.BOARD_SIZE ){
-                            if(map[pos.x-i].charAt(pos.y+i)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y+i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y+i)));
                                 i=i+1;
@@ -549,7 +560,7 @@ public class helper {
                     i = 1;
                     /*cazuri pe verticala/ orizontala */
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE){
-                            if(map[pos.x+i].charAt(pos.y)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
                                 i=i+1;
@@ -565,7 +576,7 @@ public class helper {
                     
                     while(t!=1 && pos.x-i >= 0){
                         
-                            if(map[pos.x-i].charAt(pos.y)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
                                 i=i+1;
@@ -581,7 +592,7 @@ public class helper {
                     
                     while(t!=1 && pos.y-i >= 0){
                         
-                            if(map[pos.x].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
                                 i=i+1;
@@ -597,7 +608,7 @@ public class helper {
                     
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE){
                         
-                            if(map[pos.x+i].charAt(pos.y)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
                                 i=i+1;
@@ -616,7 +627,7 @@ public class helper {
                     i = 1;
                     /*sunt 4 cazuri la nebun 4 diagonale */
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y+i < settings.BOARD_SIZE){
-                            if(map[pos.x+i].charAt(pos.y+i)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y+i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y+i)));
                                 i=i+1;
@@ -632,7 +643,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y-i > 0){
-                            if(map[pos.x+i].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y-i)));
                                 i=i+1;
@@ -648,7 +659,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x-i > 0 && pos.y-i > 0){
-                            if(map[pos.x-i].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y-i)));
                                 i=i+1;
@@ -664,7 +675,7 @@ public class helper {
                     i = 1;
                     
                     while(t!=1 && pos.x-i > 0 && pos.y+i < settings.BOARD_SIZE ){
-                            if(map[pos.x-i].charAt(pos.y+i)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y+i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y+i)));
                                 i=i+1;
@@ -681,7 +692,7 @@ public class helper {
                     
                     /*cazuri pe verticala/ orizontala */
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE){
-                            if(map[pos.x+i].charAt(pos.y)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
                                 i=i+1;
@@ -697,7 +708,7 @@ public class helper {
                     
                     while(t!=1 && pos.x-i >= 0){
                         
-                            if(map[pos.x-i].charAt(pos.y)!=' '){ 
+                            if(map[pos.x-i].charAt(pos.y)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-i,pos.y)));
                                 i=i+1;
@@ -713,7 +724,7 @@ public class helper {
                     
                     while(t!=1 && pos.y-i >= 0){
                         
-                            if(map[pos.x].charAt(pos.y-i)!=' '){ 
+                            if(map[pos.x].charAt(pos.y-i)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-i)));
                                 i=i+1;
@@ -729,7 +740,7 @@ public class helper {
                     
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE){
                         
-                            if(map[pos.x+i].charAt(pos.y)!=' '){ 
+                            if(map[pos.x+i].charAt(pos.y)!=settings.FREE_CHELL){ 
                                 //adaug la miscari posibile
                                 list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+i,pos.y)));
                                 i=i+1;
