@@ -1,0 +1,22 @@
+
+Chess-Game engine is an AI for computational chess
+
+It has implemented the representations of the board and of the move
+To simplify the work of moving peaces, we decided to sepparate the objects
+representation from the actual algorithms ( such as finding all the possible 
+moves of a piece ) by implementing the additional class helper which implemets
+exactly those moves.
+
+At the start of the application, an instance of the bootstrapper class is
+created ( which initializes all the components and applyes the initial
+settings ).
+
+The bootstrapper class then creates a game class, which is responsible for
+responding to the events issued by the Xboard.
+
+
+A quick map of the project:
+
+application -> bootstrapper -> game -> board 
+                                   -> stdProtocol
+
