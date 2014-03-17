@@ -29,6 +29,8 @@ public class game {
 	private static final int EVENT_MOVE = 9;
 	
 	private int color; 
+	private boolean forced;
+	private int numMoves;
 	
 	private PrintWriter fileLog;
 	
@@ -37,6 +39,8 @@ public class game {
 		gameBoard = new board(board.initialState());
 		fileLog = new PrintWriter(new FileWriter(settings.LOG_FILE,true));
 		color = 0;
+		forced = false;
+		numMoves = 0;
 	}
 	
 	// This command will be sent once immediately after your engine process is started. 
@@ -59,6 +63,7 @@ public class game {
 	
 	public int eventNew( String event ) {
 		gameBoard = new board(board.initialState());
+		numMoves = 0;
 		return EVENT_NEW;
 	}
 	
@@ -68,7 +73,7 @@ public class game {
 	//     or make moves of its own.
 	
 	public int eventForce( String event ) {
-		
+		forced = true;
 		return EVENT_FORCE;
 	}
 	
@@ -78,7 +83,10 @@ public class game {
 	// Start thinking and eventually make a move.
 	
 	public int eventGo( String event ) {
+		forced = false;
+		
 		stdProtocol.message("e2e4", fileLog);
+		++ numMoves;
 		return EVENT_GO;
 	}
 	
@@ -87,6 +95,7 @@ public class game {
 	public int eventWhite( String event ) {
 		color = 0;
 		stdProtocol.message("e2e4", fileLog);
+		++ numMoves;
 		return EVENT_WHITE;
 	}
 	
@@ -124,8 +133,12 @@ public class game {
 		move nextMove = move.convertOutput(event);
 		gameBoard.move(nextMove);
 		gameBoard.flip();
+		++ numMoves;
 		
-		stdProtocol.message("move e7e5", fileLog);
+		if ( !forced ) {
+			stdProtocol.message("move e7e5", fileLog);
+			++ numMoves;
+		}
 		return EVENT_MOVE;
 	}
 	

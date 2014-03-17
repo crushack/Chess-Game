@@ -7,7 +7,7 @@ import org.junit.Test;
 import settings.settings;
 
 public class boardTest {
-
+	
 	@Test
 	public void stressTest() {
 		
