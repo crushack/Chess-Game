@@ -332,8 +332,10 @@ public class helper {
                 int t;
                 // white pieces
                 if(piece == 'B'){
+                	
                     t = 0;
                     i = 1;
+                    
                     //there are 4 cases 
                     // the bishop wants to go down right (as we look at the board)
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y+i < settings.BOARD_SIZE){
@@ -352,6 +354,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the bishop wants to go down left (as we look at the board)
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y-i > 0){
                             if(map[pos.x+i].charAt(pos.y-i)==settings.FREE_CHELL){ 
@@ -368,6 +371,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the bishop wants to go up left (as we look at the board)
                     while(t!=1 && pos.x-i > 0 && pos.y-i > 0){
                             if(map[pos.x-i].charAt(pos.y-i)==settings.FREE_CHELL){ 
@@ -384,6 +388,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the bishop wants to go up right (as we look at the board)  
                     while(t!=1 && pos.x-i > 0 && pos.y+i < settings.BOARD_SIZE ){
                             if(map[pos.x-i].charAt(pos.y+i)==settings.FREE_CHELL){ 
@@ -401,8 +406,10 @@ public class helper {
                 }
                 //black pieces
                 if(piece == 'b'){
+                	
                     t = 0;
                     i = 1;
+                    
                     // there are four cases
                     // the bishop wants to go down right (as we look at the board)
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y+i < settings.BOARD_SIZE){
@@ -420,6 +427,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the bishop wants to go down left (as we look at the board) 
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y-i > 0){
                             if(map[pos.x+i].charAt(pos.y-i)==settings.FREE_CHELL){ 
@@ -436,6 +444,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the bishop wants to go up left (as we look at the board) 
                     while(t!=1 && pos.x-i > 0 && pos.y-i > 0){
                             if(map[pos.x-i].charAt(pos.y-i)==settings.FREE_CHELL){ 
@@ -452,6 +461,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the bishop wants to go up right (as we look at the board) 
                     while(t!=1 && pos.x-i > 0 && pos.y+i < settings.BOARD_SIZE ){
                             if(map[pos.x-i].charAt(pos.y+i)==settings.FREE_CHELL){ 
@@ -480,8 +490,10 @@ public class helper {
                 int t;
                 //pentru alb
                 if(piece == 'Q'){
+                	
                     t = 0;
                     i = 1;
+                    
                     //there are 8 cases 
                     // the queen wants to go down right (as we look at the board)
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y+i < settings.BOARD_SIZE){
@@ -625,8 +637,10 @@ public class helper {
             }
                 //black pieces
                 if(piece == 'q'){
+                	
                     t = 0;
                     i = 1;
+                    
                     // there are eight cases
                     // the queen wants to go down right (as we look at the board)
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y+i < settings.BOARD_SIZE){
@@ -644,6 +658,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the queen wants to go down left (as we look at the board) 
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE && pos.y-i > 0){
                             if(map[pos.x+i].charAt(pos.y-i)==settings.FREE_CHELL){ 
@@ -660,6 +675,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the queen wants to go up left (as we look at the board) 
                     while(t!=1 && pos.x-i > 0 && pos.y-i > 0){
                             if(map[pos.x-i].charAt(pos.y-i)==settings.FREE_CHELL){ 
@@ -676,6 +692,7 @@ public class helper {
                     
                     t = 0;
                     i = 1;
+                    
                     // the queen wants to go up right (as we look at the board) 
                     while(t!=1 && pos.x-i > 0 && pos.y+i < settings.BOARD_SIZE ){
                             if(map[pos.x-i].charAt(pos.y+i)==settings.FREE_CHELL){ 
@@ -693,8 +710,7 @@ public class helper {
                     t = 0;
                     i = 1;
                     
-                    /*cazuri pe verticala/ orizontala */
-                   
+                    /*cazuri pe verticala/ orizontala */   
                     // trying to move downwards ( change of perspective )
                     while(t!=1 && pos.x+i < settings.BOARD_SIZE){
             	
@@ -773,6 +789,7 @@ public class helper {
 		// TODO
                 ArrayList<move> list = new ArrayList<move>();
                 char piece = map[pos.x].charAt(pos.y);
+                
                 //white pieces
                 if(piece == 'K'){
                 	
@@ -780,36 +797,43 @@ public class helper {
                     if(pos.x+1 < settings.BOARD_SIZE && pos.y-1 >=0 && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y -1)))){
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y-1)));
                     }
+                    
                     //wants to go down ( as we look at the board)
                     if(pos.x+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y)))){
                         //adaug pozitia pos.x+1 pos.y la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y)));
                     }
+                    
                     //wants to go down right( as we look at the board)
                     if(pos.x+1 < settings.BOARD_SIZE && pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y +1)))){
                         //adaug pozitia pos.x+1 pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y+1)));
                     }
+                    
                     //wants to go right( as we look at the board)
                     if(pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x].charAt(pos.y +1)))){
                         //adaug pozitia pos.x pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y+1)));
                     }
+                    
                     //wants to go up right( as we look at the board)
                     if(pos.x-1 >= 0 && pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y+1)))){
                         //adaug pozitia pos.x-1 pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y+1)));
                     }
+                    
                     //wants to go up( as we look at the board)
                     if(pos.x-1 >= 0 && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y)))){
                         //adaug pozitia pos.x-1 pos.y la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y)));
                     }
+                    
                     //wants to go up left( as we look at the board)
                     if(pos.x-1 >= 0 && pos.y-1 >= 0 && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y -1)))){
                         //adaug poz pos.x-1 pos.y-1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y-1))); 
                     }
+                    
                     //wants to go left( as we look at the board)
                     if(pos.y-1 >=0 && !(Character.isUpperCase(map[pos.x].charAt(pos.y -1)))){
                         //adaug pozitia pos.x pos.y-1 la mutari
@@ -818,40 +842,48 @@ public class helper {
                 }
                 //black pieces
                if(piece == 'k'){
+            	   
                     //wants to go down left( as we look at the board)
                     if(pos.x+1 < settings.BOARD_SIZE && pos.y-1 >=0 && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y -1)))){
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y-1)));
                     }
+                    
                      //wants to go down ( as we look at the board)
                     if(pos.x+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y)))){
                         //adaug pozitia pos.x+1 pos.y la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y)));
                     }
+                    
                     //wants to go down leftight( as we look at the board)
                     if(pos.x+1 < settings.BOARD_SIZE && pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y+1)))){
                         //adaug pozitia pos.x+1 pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y+1)));
                     }
+                    
                     //wants to go right( as we look at the board)
                     if(pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x].charAt(pos.y+1)))){
                         //adaug pozitia pos.x pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y+1)));
                     }
+                    
                     //wants to go up right( as we look at the board)
                     if(pos.x-1 >= 0 && pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y+1)))){
                         //adaug pozitia pos.x-1 pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y+1)));
                     }
+                    
                     //wants to go up( as we look at the board)
                     if(pos.x-1 >= 0 && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y)))){
                         //adaug pozitia pos.x-1 pos.y la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y)));
                     }
+                    
                     //wants to go up left( as we look at the board)
                     if(pos.x-1 >= 0 && pos.y-1 >= 0 && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y -1)))){
                         //adaug poz pos.x-1 pos.y-1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y-1))); 
                     }
+                    
                     //wants to go left( as we look at the board)
                     if(pos.y-1 >=0 && !(Character.isUpperCase(map[pos.x].charAt(pos.y -1)))){
                         //adaug pozitia pos.x pos.y-1 la mutari
