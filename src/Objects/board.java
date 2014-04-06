@@ -49,7 +49,7 @@ public class board {
 	//		ArrayList<move> getQueenMoves( board b, Point position )
 	//		ArrayList<move> getKingMoves( board b, Point position )
 	
-	ArrayList<move> getPossibleMoves( int color ) {
+	public ArrayList<move> getPossibleMoves( int color ) {
 		
 		ArrayList<move> possibleMoves = new ArrayList<move>();
 		
@@ -131,6 +131,8 @@ public class board {
 	// Executes the move $x on the board, !!!without flipping it!!!
 	
 	public void move( move x ) {
+		
+		// TODO: add move to last move
 		
 		Point source = x.getSource();
 		Point dest = x.getDest();

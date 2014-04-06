@@ -38,7 +38,7 @@ public class helper {
 	        // first move of a pawn
 	        if ( pos.x == 1 && map[pos.x + 2].charAt(pos.y)== settings.FREE_CHELL )
 			list.add(new move(new Point(pos.x, pos.y),
-	    					new Point(pos.x + 2, pos.x)));
+	    					new Point(pos.x + 2, pos.y)));
 
 	        if(pos.x + 1 < settings.BOARD_SIZE && 
 	        		map[pos.x+1].charAt(pos.y) == settings.FREE_CHELL )
@@ -63,7 +63,7 @@ public class helper {
 	    	if ( pos.x == settings.BOARD_SIZE - 1 && 
 	    			map[pos.x - 2].charAt(pos.y) == settings.FREE_CHELL )
 	    		list.add(new move( new Point(pos.x, pos.y),
-	    							new Point(pos.x -2, pos.y)));
+	    							new Point(pos.x - 2, pos.y)));
 
 	        if(pos.x-1>=0 && map[pos.x-1].charAt(pos.y) == settings.FREE_CHELL)
               	list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y)));
@@ -775,6 +775,7 @@ public class helper {
                 char piece = map[pos.x].charAt(pos.y);
                 //white pieces
                 if(piece == 'K'){
+                	
                     //wants to go down left( as we look at the board)
                     if(pos.x+1 < settings.BOARD_SIZE && pos.y-1 >=0 && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y -1)))){
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y-1)));

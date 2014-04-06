@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import DAL.stdProtocol;
 import Objects.board;
@@ -132,11 +133,14 @@ public class game {
 		
 		move nextMove = move.convertOutput(event);
 		gameBoard.move(nextMove);
-		gameBoard.flip();
+		//gameBoard.flip();
 		++ numMoves;
 		
 		if ( !forced ) {
-			stdProtocol.message("move e7e5", fileLog);
+			ArrayList<move> possibleMoves = gameBoard.getPossibleMoves(1);
+			nextMove = possibleMoves.get( (int)(Math.random() * possibleMoves.size()) );
+			stdProtocol.message("move " + nextMove.getMove(), fileLog);
+			gameBoard.move(nextMove);
 			++ numMoves;
 		}
 		return EVENT_MOVE;
@@ -179,11 +183,13 @@ public class game {
 		while ( true ) {
 			String event = stdProtocol.getMessage(stdin, fileLog);
 			eventCode = eventParse(event);
+			fileLog.flush();
 			if ( eventCode == EVENT_QUIT ) break;
 		}
 		
 		fileLog.close();
 		
+		stdProtocol.message("Successfull game ending!", fileLog);
 		if ( eventCode == EVENT_NEW ) 
 			return settings.NEW_GAME;
 		return settings.LAST_GAME;

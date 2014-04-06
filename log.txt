@@ -3,3 +3,81 @@
 [Mon Mar 17 19:59:15 EET 2014]# e2e4
 [Mon Mar 17 19:59:15 EET 2014]$ move e7e5
 [Mon Mar 17 19:59:18 EET 2014]# quit
+[Mon Apr 07 17:50:43 EEST 2014]# e2e4
+[Mon Apr 07 17:50:43 EEST 2014]$ move a7a6
+[Mon Apr 07 17:50:45 EEST 2014]# e2e4
+[Mon Apr 07 17:50:45 EEST 2014]$ move a6a5
+[Mon Apr 07 17:50:47 EEST 2014]# e2e4
+[Mon Apr 07 17:50:47 EEST 2014]$ move a5a4
+[Mon Apr 07 17:50:48 EEST 2014]# e2e4
+[Mon Apr 07 17:50:48 EEST 2014]$ move a4a3
+[Mon Apr 07 17:50:51 EEST 2014]# e2e4
+[Mon Apr 07 17:50:51 EEST 2014]$ move a3b2
+[Mon Apr 07 17:50:52 EEST 2014]# e2e4
+[Mon Apr 07 17:50:52 EEST 2014]$ move b2c1
+[Mon Apr 07 17:50:54 EEST 2014]# e2e4
+[Mon Apr 07 17:50:54 EEST 2014]$ move b7b6
+[Mon Apr 07 17:50:56 EEST 2014]# e2e4
+[Mon Apr 07 17:50:56 EEST 2014]$ move b6b5
+[Mon Apr 07 17:51:09 EEST 2014]# null
+[Mon Apr 07 17:56:04 EEST 2014]# e2e4
+[Mon Apr 07 17:56:04 EEST 2014]$ move a7a6
+[Mon Apr 07 17:56:05 EEST 2014]# e2e4
+[Mon Apr 07 17:56:05 EEST 2014]$ move a6a5
+[Mon Apr 07 17:56:07 EEST 2014]# e2e4
+[Mon Apr 07 17:56:07 EEST 2014]$ move a5a4
+[Mon Apr 07 17:56:13 EEST 2014]# null
+[Mon Apr 07 18:13:20 EEST 2014]# e2e4
+[Mon Apr 07 18:13:20 EEST 2014]$ move a7a6
+[Mon Apr 07 18:13:22 EEST 2014]# e4e5
+[Mon Apr 07 18:13:22 EEST 2014]$ move a6a5
+[Mon Apr 07 18:13:22 EEST 2014]# 
+[Mon Apr 07 18:13:34 EEST 2014]# e2e4
+[Mon Apr 07 18:13:34 EEST 2014]$ move a7a6
+[Mon Apr 07 18:13:36 EEST 2014]# e4e5
+[Mon Apr 07 18:13:36 EEST 2014]$ move a6a5
+[Mon Apr 07 18:15:15 EEST 2014]# e5e6
+[Mon Apr 07 18:15:15 EEST 2014]$ move a5a4
+[Mon Apr 07 18:15:17 EEST 2014]# null
+[Mon Apr 07 18:15:21 EEST 2014]# e2e4
+[Mon Apr 07 18:15:21 EEST 2014]$ move a7a6
+[Mon Apr 07 18:15:22 EEST 2014]# e4e5
+[Mon Apr 07 18:15:22 EEST 2014]$ move a6a5
+[Mon Apr 07 18:15:25 EEST 2014]# e4e5
+[Mon Apr 07 18:15:25 EEST 2014]$ move a5a4
+[Mon Apr 07 18:15:26 EEST 2014]# e4e5
+[Mon Apr 07 18:15:26 EEST 2014]$ move a4a3
+[Mon Apr 07 18:15:27 EEST 2014]# e4e5
+[Mon Apr 07 18:15:27 EEST 2014]$ move a3b2
+[Mon Apr 07 18:15:28 EEST 2014]# e4e5
+[Mon Apr 07 18:15:28 EEST 2014]$ move b2c1
+[Mon Apr 07 18:15:29 EEST 2014]# e4e5
+[Mon Apr 07 18:15:29 EEST 2014]$ move b7b6
+[Mon Apr 07 18:15:31 EEST 2014]# e4e5
+[Mon Apr 07 18:15:31 EEST 2014]$ move b6b5
+[Mon Apr 07 18:15:33 EEST 2014]# null
+[Mon Apr 07 18:15:37 EEST 2014]# e2e4
+[Mon Apr 07 18:15:37 EEST 2014]$ move a7a6
+[Mon Apr 07 18:15:38 EEST 2014]# e4e5
+[Mon Apr 07 18:15:38 EEST 2014]$ move a6a5
+[Mon Apr 07 18:15:40 EEST 2014]# null
+[Mon Apr 07 19:50:26 EEST 2014]# e2e4
+[Mon Apr 07 19:50:26 EEST 2014]$ move a7a6
+[Mon Apr 07 19:51:07 EEST 2014]# null
+[Mon Apr 07 19:51:10 EEST 2014]# e2e4
+[Mon Apr 07 19:51:10 EEST 2014]$ move a7a6
+[Mon Apr 07 19:51:26 EEST 2014]# null
+[Mon Apr 07 19:51:29 EEST 2014]# e2e4
+[Mon Apr 07 19:51:29 EEST 2014]$ move a7a6
+[Mon Apr 07 19:51:47 EEST 2014]# null
+[Mon Apr 07 19:51:49 EEST 2014]# e2e4
+[Mon Apr 07 19:51:49 EEST 2014]$ move d7d6
+[Mon Apr 07 19:51:54 EEST 2014]# null
+[Mon Apr 07 19:51:59 EEST 2014]# e2e4
+[Mon Apr 07 19:51:59 EEST 2014]$ move b8c6
+[Mon Apr 07 19:52:09 EEST 2014]# null
+[Mon Apr 07 19:52:11 EEST 2014]# e2e4
+[Mon Apr 07 19:52:11 EEST 2014]$ move h7h6
+[Mon Apr 07 19:52:13 EEST 2014]# e4e5
+[Mon Apr 07 19:52:13 EEST 2014]$ move a7a6
+[Mon Apr 07 19:52:17 EEST 2014]# null

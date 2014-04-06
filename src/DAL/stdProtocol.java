@@ -8,13 +8,15 @@ import java.util.Calendar;
 public class stdProtocol {
 	
 	public static void message( String msg, PrintWriter fileLog ) {
+		
 		System.out.println(msg);
-		System.out.flush();
+		//System.out.flush();
 		
 		Calendar date = Calendar.getInstance();
 		date.add(Calendar.DATE, 1);
 		
 		fileLog.println( "[" + date.getTime() + "]$ " + msg);
+		fileLog.flush();
 	}
 	
 	public static String getMessage( BufferedReader br, PrintWriter fileLog ) throws IOException {
@@ -24,6 +26,7 @@ public class stdProtocol {
 		date.add(Calendar.DATE, 1);
 		
 		fileLog.println( "[" + date.getTime() + "]# " + msg);
+		fileLog.flush();
 		return msg;
 	}
 }

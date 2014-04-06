@@ -54,8 +54,13 @@ public class move {
 	//		http://en.wikipedia.org/wiki/Chess_notation
 	
 	public String getMove() {
-		// TODO
-		return new String();
+		String ret = new String();
+		
+		ret += (char)('a' + currentPosition.y);
+		ret += (char)('1' + currentPosition.x);
+		ret += (char)('a' + destinationPosition.y);
+		ret += (char)('1' + destinationPosition.x);
+		return ret;
 	}
 	
 	// sets the source position to ps
