@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import AI_ready.RandomAi;
+import AI_ready.brainType;
 import settings.settings;
 
 // bootstrapper class
@@ -19,11 +21,11 @@ public class bootstrapper {
 	}
 	
 	public int startGame() throws IOException {
-		game current = new game(br);
+		game current = new game(br, new RandomAi());
 		return current.run();
 	}
 	
-	public void run() throws IOException {
+	public void run(brainType bot) throws IOException {
 		
 		while ( startGame() == settings.NEW_GAME ) {
 			

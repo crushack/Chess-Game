@@ -1,0 +1,7 @@
+[Sat Apr 26 16:41:38 EEST 2014]# e2e4
+[Sat Apr 26 16:41:38 EEST 2014]$ move e8e7
+[Sat Apr 26 16:41:43 EEST 2014]# e4e5
+[Sat Apr 26 16:41:43 EEST 2014]$ move f7f6
+[Sat Apr 26 16:41:47 EEST 2014]# e2e4
+[Sat Apr 26 16:41:47 EEST 2014]$ move e7e8
+[Sat Apr 26 16:41:58 EEST 2014]# null

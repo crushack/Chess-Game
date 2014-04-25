@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import AI_ready.brain;
 import DAL.stdProtocol;
 import Objects.board;
 import Objects.move;
@@ -35,13 +36,17 @@ public class game {
 	
 	private PrintWriter fileLog;
 	
-	public game(BufferedReader stdin) throws IOException {
+	private brain ChessBot;
+	
+	public game(BufferedReader stdin, brain ChessBot) throws IOException {
 		this.stdin = stdin;
 		gameBoard = new board(board.initialState());
 		fileLog = new PrintWriter(new FileWriter(settings.LOG_FILE,true));
 		color = 0;
 		forced = false;
 		numMoves = 0;
+		
+		this.ChessBot = ChessBot;
 	}
 	
 	// This command will be sent once immediately after your engine process is started. 

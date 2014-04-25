@@ -109,9 +109,4 @@ public class AI_helper {
 		return 0;
 	}
 	
-	public static int attacking_peaces( String [] map, boolean [][] moved ) {
-		
-		// TODO
-		return 0;
-	}
 }
