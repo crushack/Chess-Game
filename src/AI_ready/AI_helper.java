@@ -54,4 +54,64 @@ public class AI_helper {
 		// TODO
 		return 0;
 	}
+	
+	public static int mobility_of_pawns( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
+	
+	public static int pawn_structure( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
+	
+	public static int four_powners( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
+	
+	public static int five_powners( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
+	
+	public static int pawn_avalanche( String [] map, boolean [][] moved ) {
+		
+		// TODO: optional
+		return 0;
+	}
+	
+	public static int backward_isolated_pawn( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
+	
+	public static int space_advantage( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
+	
+	public static int position_of_king( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
+	
+	public static int additional_free_space( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
+	
+	public static int attacking_peaces( String [] map, boolean [][] moved ) {
+		
+		// TODO
+		return 0;
+	}
 }
