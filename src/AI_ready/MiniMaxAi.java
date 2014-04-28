@@ -1,8 +1,11 @@
 package AI_ready;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 import Objects.board;
+import Objects.helper;
 import Objects.move;
 import settings.settings;
 
@@ -24,11 +27,16 @@ public class MiniMaxAi implements brain {
 		
 		int ret = settings.INFINITE, val;
 		ArrayList<move> possibleMoves = state.getPossibleMoves(color);
+		Collections.shuffle(possibleMoves, new Random(System.nanoTime()));
 		
 		for ( move m : possibleMoves ) {
 			
 			board nState = new board(state);
 			nState.move(m);
+			
+			if ( helper.isCheck(nState, color) )
+				continue;
+			
 			val = maxi( depth - 1, nState, 1 - color );
 			ret = Math.min(ret, val);
 		}
@@ -42,11 +50,16 @@ public class MiniMaxAi implements brain {
 		
 		int ret = - settings.INFINITE, val;
 		ArrayList<move> possibleMoves = state.getPossibleMoves(color);
+		Collections.shuffle(possibleMoves, new Random(System.nanoTime()));
 		
 		for ( move m : possibleMoves ) {
 			
 			board nState = new board(state);
 			nState.move(m);
+			
+			if ( helper.isCheck(nState, color) )
+				continue;
+			
 			val = mini( depth - 1, nState, 1 - color );
 			ret = Math.max(ret, val);
 			if ( depth == settings.MAX_DEPTH && ret == val )

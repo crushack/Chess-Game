@@ -41,6 +41,9 @@ public class board {
 		setBoard( map );
 	}
 	
+	// @constructor
+	// duplicates the model board
+	
 	public board ( board model ) {
 		for ( int i = 0; i < settings.BOARD_SIZE; ++ i )
 			this.map[i] = new String(model.map[i]);
@@ -49,6 +52,8 @@ public class board {
 			for ( int j = 0; j < settings.BOARD_SIZE; ++ j )
 				moved[i][j] = model.moved[i][j];
 	}
+	
+	// method initializes the moved structure
 	
 	private void init() {
 		for ( int i = 0; i < settings.BOARD_SIZE; ++ i )
@@ -100,6 +105,7 @@ public class board {
 		return possibleMoves;
 	}
 	
+	
 	// sets the state of the board custom state $map
 	
 	void setBoard( String [] map ) {
@@ -112,7 +118,10 @@ public class board {
 	// returns the cararacter at possition (x, y)
 	
 	public char charAt( int coord_x, int coord_y ) {
-		return map[coord_x].charAt(coord_y);
+		if ( 0 <= coord_x && coord_x < settings.BOARD_SIZE && 
+			 0 <= coord_y && coord_y < settings.BOARD_SIZE )
+			return map[coord_x].charAt(coord_y);
+		return '-';
 	}
 	
 	// Clears all the moves in the vector $lastMOves

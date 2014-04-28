@@ -892,4 +892,121 @@ public class helper {
                 }
 		return list;
 	}
+	
+	public static boolean isCheck( board state, int color) {
+		
+		int i;
+		Point pos = new Point();
+		boolean found = false;
+		
+		for ( pos.x = 0; pos.x < settings.BOARD_SIZE && ! found; ++ pos.x )
+			for ( pos.y = 0; pos.y < settings.BOARD_SIZE && ! found; ++ pos.y )
+				if ( color == 0 && state.charAt(pos.x, pos.y) == 'K' ||
+					 color == 1 && state.charAt(pos.x, pos.y) == 'k' )
+						found = true;
+		
+		-- pos.x; -- pos.y;
+		//System.out.println( pos.x + " " + pos.y + "(" + state.charAt(pos.x, pos.y) + ")" );
+		if ( state.charAt( pos.x, pos.y ) == 'k' ) {
+			
+			// king attacked by a pawn
+			if ( state.charAt( pos.x - 1, pos.y + 1 ) == 'P' || 
+				 state.charAt( pos.x - 1, pos.y - 1) == 'P')
+				return true;
+			
+			// king attacked by knight
+			if ( state.charAt( pos.x + 2, pos.y + 1 ) == 'N' ||
+				 state.charAt( pos.x + 2, pos.y - 1 ) == 'N' ||
+				 state.charAt( pos.x - 2, pos.y + 1 ) == 'N' ||
+				 state.charAt( pos.x - 2, pos.y - 1 ) == 'N' ||
+				 state.charAt( pos.x + 1, pos.y + 2 ) == 'N' ||
+				 state.charAt( pos.x + 1, pos.y - 2 ) == 'N' ||
+				 state.charAt( pos.x - 1, pos.y + 2 ) == 'N' ||
+				 state.charAt( pos.x - 1, pos.y - 2 ) == 'N' )
+				return true;
+			
+			for ( i = 1; state.charAt( pos.x + i, pos.y) == settings.FREE_CHELL; ++ i );
+			if ( state.charAt( pos.x + i, pos.y) == 'Q' ||  state.charAt( pos.x + i, pos.y) == 'R')
+				return true;
+			
+			for ( i = 1; state.charAt( pos.x - i, pos.y) == settings.FREE_CHELL; ++ i );
+			if ( state.charAt( pos.x - i, pos.y) == 'Q' ||  state.charAt( pos.x - i, pos.y) == 'R')
+				return true;
+			
+			for ( i = 1; state.charAt( pos.x, pos.y + i) == settings.FREE_CHELL; ++ i );
+			if ( state.charAt( pos.x, pos.y + i) == 'Q' ||  state.charAt( pos.x, pos.y + i) == 'R')
+				return true;
+			
+			for ( i = 1; state.charAt( pos.x, pos.y - i) == settings.FREE_CHELL; ++ i );
+			if ( state.charAt( pos.x, pos.y - i) == 'Q' ||  state.charAt( pos.x, pos.y - i) == 'R')
+				return true;
+			
+			for ( i = 1; state.charAt( pos.x + i, pos.y + i) == settings.FREE_CHELL; ++ i );
+			if ( state.charAt( pos.x + i, pos.y + i) == 'Q' ||  state.charAt( pos.x + i, pos.y + i) == 'B')
+				return true;
+			
+			for ( i = 1; state.charAt( pos.x + i, pos.y - i) == settings.FREE_CHELL; ++ i );
+			if ( state.charAt( pos.x + i, pos.y - i) == 'Q' ||  state.charAt( pos.x + i, pos.y - i) == 'B')
+				return true;
+			
+			for ( i = 1; state.charAt( pos.x - i, pos.y + i) == settings.FREE_CHELL; ++ i );
+			if ( state.charAt( pos.x - i, pos.y + i) == 'Q' ||  state.charAt( pos.x - i, pos.y + i) == 'B')
+				return true;
+			
+			for ( i = 1; state.charAt( pos.x - i, pos.y - i) == settings.FREE_CHELL; ++ i );
+			if ( state.charAt( pos.x - i, pos.y - i) == 'Q' ||  state.charAt( pos.x - i, pos.y - i) == 'B')
+				return true;
+			return false;
+		}
+		
+		// king attacked by pawn
+		if ( state.charAt( pos.x + 1, pos.y + 1 ) == 'p' ||
+			 state.charAt( pos.x + 1, pos.y - 1 ) == 'p' )
+			return true;
+		
+		// king attacked by knight
+		if ( state.charAt( pos.x + 2, pos.y + 1 ) == 'n' ||
+			 state.charAt( pos.x + 2, pos.y - 1 ) == 'n' ||
+			 state.charAt( pos.x - 2, pos.y + 1 ) == 'n' ||
+			 state.charAt( pos.x - 2, pos.y - 1 ) == 'n' ||
+			 state.charAt( pos.x + 1, pos.y + 2 ) == 'n' ||
+			 state.charAt( pos.x + 1, pos.y - 2 ) == 'n' ||
+			 state.charAt( pos.x - 1, pos.y + 2 ) == 'n' ||
+			 state.charAt( pos.x - 1, pos.y - 2 ) == 'n' )
+			return true;
+		
+		for ( i = 1; state.charAt( pos.x + i, pos.y) == settings.FREE_CHELL; ++ i );
+		if ( state.charAt( pos.x + i, pos.y) == 'q' ||  state.charAt( pos.x + i, pos.y) == 'r')
+			return true;
+		
+		for ( i = 1; state.charAt( pos.x - i, pos.y) == settings.FREE_CHELL; ++ i );
+		if ( state.charAt( pos.x - i, pos.y) == 'q' ||  state.charAt( pos.x - i, pos.y) == 'r')
+			return true;
+		
+		for ( i = 1; state.charAt( pos.x, pos.y + i) == settings.FREE_CHELL; ++ i );
+		if ( state.charAt( pos.x, pos.y + i) == 'q' ||  state.charAt( pos.x, pos.y + i) == 'r')
+			return true;
+		
+		for ( i = 1; state.charAt( pos.x, pos.y - i) == settings.FREE_CHELL; ++ i );
+		if ( state.charAt( pos.x, pos.y - i) == 'q' ||  state.charAt( pos.x, pos.y - i) == 'r')
+			return true;
+		
+		for ( i = 1; state.charAt( pos.x + i, pos.y + i) == settings.FREE_CHELL; ++ i );
+		if ( state.charAt( pos.x + i, pos.y + i) == 'q' ||  state.charAt( pos.x + i, pos.y + i) == 'b')
+			return true;
+		
+		for ( i = 1; state.charAt( pos.x + i, pos.y - i) == settings.FREE_CHELL; ++ i );
+		if ( state.charAt( pos.x + i, pos.y - i) == 'q' ||  state.charAt( pos.x + i, pos.y - i) == 'b')
+			return true;
+		
+		for ( i = 1; state.charAt( pos.x - i, pos.y + i) == settings.FREE_CHELL; ++ i );
+		if ( state.charAt( pos.x - i, pos.y + i) == 'q' ||  state.charAt( pos.x - i, pos.y + i) == 'b')
+			return true;
+		
+		for ( i = 1; state.charAt( pos.x - i, pos.y - i) == settings.FREE_CHELL; ++ i );
+		if ( state.charAt( pos.x - i, pos.y - i) == 'q' ||  state.charAt( pos.x - i, pos.y - i) == 'b')
+			return true;
+		
+		return false;
+	}
 }

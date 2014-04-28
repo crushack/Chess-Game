@@ -123,3 +123,24 @@
 [Tue Apr 29 15:31:15 EEST 2014]# e6e7
 [Tue Apr 29 15:31:15 EEST 2014]$ move b8c6
 [Tue Apr 29 15:31:19 EEST 2014]# null
+[Tue Apr 29 21:29:54 EEST 2014]# e2e4
+[Tue Apr 29 21:30:22 EEST 2014]# e2e4
+[Tue Apr 29 21:30:26 EEST 2014]$ move e7e5
+[Tue Apr 29 21:30:37 EEST 2014]# d2d4
+[Tue Apr 29 21:30:45 EEST 2014]$ move d8h4
+[Tue Apr 29 21:30:54 EEST 2014]# null
+[Tue Apr 29 21:57:10 EEST 2014]# e2e4
+[Tue Apr 29 21:57:37 EEST 2014]# e2e4
+[Tue Apr 29 21:57:44 EEST 2014]$ move e7e5
+[Tue Apr 29 21:58:20 EEST 2014]# null
+[Tue Apr 29 21:58:25 EEST 2014]# white
+[Tue Apr 29 21:58:28 EEST 2014]$ move e2e3
+[Tue Apr 29 21:59:41 EEST 2014]# white
+[Tue Apr 29 21:59:45 EEST 2014]$ move e2e3
+[Tue Apr 29 22:00:37 EEST 2014]# null
+[Tue Apr 29 22:00:40 EEST 2014]# e2e4
+[Tue Apr 29 22:00:44 EEST 2014]$ move e7e5
+[Tue Apr 29 22:00:54 EEST 2014]# null
+[Tue Apr 29 22:09:19 EEST 2014]# e2e4
+[Tue Apr 29 22:09:22 EEST 2014]$ move e7e5
+[Tue Apr 29 22:09:29 EEST 2014]# null

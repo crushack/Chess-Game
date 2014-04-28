@@ -20,6 +20,17 @@ public class helperTest {
 		"r b   k ",
 	};
 	
+	public static String [] checkGameMap_1 = {
+		"R     R ",
+		"PPP    P",
+		"   PK   ",
+		"   pPqp ",
+		"   p   b",
+		"p  p   p",
+		"  p    p",
+		"r   kb r",
+	};
+	
 	@Test
 	public void getPawnMoves() {
 	
@@ -44,6 +55,15 @@ public class helperTest {
 		for ( move next : list ) {
 			System.out.println(next.getSource() + " " + next.getDest());
 		}
+	}
+	
+	@Test
+	public void isCheck() {
+		
+		board b = new board(checkGameMap_1);
+		
+		if ( ! helper.isCheck(b, 0) )
+			fail("Check Mate!");
 	}
 
 }
