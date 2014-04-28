@@ -15,4 +15,7 @@ public class settings {
 	public static final int NEW_GAME = 1;
 	
 	public static final String LOG_FILE = "log.txt";
+	
+	public static final int MAX_DEPTH = 3;
+	public static final int INFINITE = 1000000;
 }

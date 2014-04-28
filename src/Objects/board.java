@@ -16,7 +16,7 @@ public class board {
 	//                 'K' king
 	// uppercase for white peaces and lowercase for black peaces
 	
-	String [] map = new String[ settings.BOARD_SIZE ];
+	protected String [] map = new String[ settings.BOARD_SIZE ];
 	
 	// if moved[x][y] = 0 => the piece hasn't been moved
 	// else => the piece has been moved 
@@ -30,14 +30,30 @@ public class board {
 	// @constructor 
 	
 	public board () {
-		
+		init();
 	}
 	
 	// @constructor 
 	// create board from 8x8 char matrix
 	
 	public board ( String [] map ) {
+		init();
 		setBoard( map );
+	}
+	
+	public board ( board model ) {
+		for ( int i = 0; i < settings.BOARD_SIZE; ++ i )
+			this.map[i] = new String(model.map[i]);
+		
+		for ( int i = 0; i < settings.BOARD_SIZE; ++ i )
+			for ( int j = 0; j < settings.BOARD_SIZE; ++ j )
+				moved[i][j] = model.moved[i][j];
+	}
+	
+	private void init() {
+		for ( int i = 0; i < settings.BOARD_SIZE; ++ i )
+			for ( int j = 0; j < settings.BOARD_SIZE; ++ j)
+				moved[i][j] = true;
 	}
 	
 	// returns all possible moves from current state
@@ -93,6 +109,12 @@ public class board {
 		
 	}
 	
+	// returns the cararacter at possition (x, y)
+	
+	public char charAt( int coord_x, int coord_y ) {
+		return map[coord_x].charAt(coord_y);
+	}
+	
 	// Clears all the moves in the vector $lastMOves
 	
 	void clearMoves() {
@@ -146,6 +168,9 @@ public class board {
 		line[ source.y ] = settings.FREE_CHELL;
 		
 		map[ source.x ] = new String(line);
+		
+		moved[ source.x ][ source.y ] = false;
+		moved[ source.x ][ source.y ] = false;
 	}
 	
 	public static String[] initialState() {

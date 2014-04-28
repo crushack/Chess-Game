@@ -44,11 +44,11 @@ public class helper {
 	        		map[pos.x+1].charAt(pos.y) == settings.FREE_CHELL )
 	            list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y)));
 
-	        if(pos.x+1<settings.BOARD_SIZE && pos.y + 1 < settings.BOARD_SIZE &&
+	        if(pos.x + 1 < settings.BOARD_SIZE && pos.y + 1 < settings.BOARD_SIZE &&
 	               Character.isLowerCase(map[pos.x+1].charAt(pos.y+1)))
 	        	list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y+1)));
 
-	        if(pos.x+1<settings.BOARD_SIZE && pos.y -1 >= 0 &&
+	        if(pos.x + 1 < settings.BOARD_SIZE && pos.y -1 >= 0 &&
 	        		Character.isLowerCase(map[pos.x+1].charAt(pos.y-1)))
 	        	list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y-1)));
         }
@@ -60,7 +60,7 @@ public class helper {
         		// TODO: pawn promotion
         	}
 
-	    	if ( pos.x == settings.BOARD_SIZE - 1 && 
+	    	if ( pos.x == settings.BOARD_SIZE - 2 && 
 	    			map[pos.x - 2].charAt(pos.y) == settings.FREE_CHELL )
 	    		list.add(new move( new Point(pos.x, pos.y),
 	    							new Point(pos.x - 2, pos.y)));
@@ -844,48 +844,48 @@ public class helper {
                if(piece == 'k'){
             	   
                     //wants to go down left( as we look at the board)
-                    if(pos.x+1 < settings.BOARD_SIZE && pos.y-1 >=0 && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y -1)))){
+                    if(pos.x+1 < settings.BOARD_SIZE && pos.y-1 >=0 && !(Character.isLowerCase(map[pos.x+1].charAt(pos.y -1)))){
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y-1)));
                     }
                     
                      //wants to go down ( as we look at the board)
-                    if(pos.x+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y)))){
+                    if(pos.x+1 < settings.BOARD_SIZE && !(Character.isLowerCase(map[pos.x+1].charAt(pos.y)))){
                         //adaug pozitia pos.x+1 pos.y la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y)));
                     }
                     
                     //wants to go down leftight( as we look at the board)
-                    if(pos.x+1 < settings.BOARD_SIZE && pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x+1].charAt(pos.y+1)))){
+                    if(pos.x+1 < settings.BOARD_SIZE && pos.y+1 < settings.BOARD_SIZE && !(Character.isLowerCase(map[pos.x+1].charAt(pos.y+1)))){
                         //adaug pozitia pos.x+1 pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x+1,pos.y+1)));
                     }
                     
                     //wants to go right( as we look at the board)
-                    if(pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x].charAt(pos.y+1)))){
+                    if(pos.y+1 < settings.BOARD_SIZE && !(Character.isLowerCase(map[pos.x].charAt(pos.y+1)))){
                         //adaug pozitia pos.x pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y+1)));
                     }
                     
                     //wants to go up right( as we look at the board)
-                    if(pos.x-1 >= 0 && pos.y+1 < settings.BOARD_SIZE && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y+1)))){
+                    if(pos.x-1 >= 0 && pos.y+1 < settings.BOARD_SIZE && !(Character.isLowerCase(map[pos.x-1].charAt(pos.y+1)))){
                         //adaug pozitia pos.x-1 pos.y+1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y+1)));
                     }
                     
                     //wants to go up( as we look at the board)
-                    if(pos.x-1 >= 0 && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y)))){
+                    if(pos.x-1 >= 0 && !(Character.isLowerCase(map[pos.x-1].charAt(pos.y)))){
                         //adaug pozitia pos.x-1 pos.y la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y)));
                     }
                     
                     //wants to go up left( as we look at the board)
-                    if(pos.x-1 >= 0 && pos.y-1 >= 0 && !(Character.isUpperCase(map[pos.x-1].charAt(pos.y -1)))){
+                    if(pos.x-1 >= 0 && pos.y-1 >= 0 && !(Character.isLowerCase(map[pos.x-1].charAt(pos.y -1)))){
                         //adaug poz pos.x-1 pos.y-1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x-1,pos.y-1))); 
                     }
                     
                     //wants to go left( as we look at the board)
-                    if(pos.y-1 >=0 && !(Character.isUpperCase(map[pos.x].charAt(pos.y -1)))){
+                    if(pos.y-1 >=0 && !(Character.isLowerCase(map[pos.x].charAt(pos.y -1)))){
                         //adaug pozitia pos.x pos.y-1 la mutari
                         list.add(new move(new Point(pos.x, pos.y),new Point(pos.x,pos.y-1))); 
                     }

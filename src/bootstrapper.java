@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import AI_ready.MiniMaxAi;
 import AI_ready.RandomAi;
 import AI_ready.brainType;
 import settings.settings;
@@ -21,7 +22,7 @@ public class bootstrapper {
 	}
 	
 	public int startGame() throws IOException {
-		game current = new game(br, new RandomAi());
+		game current = new game(br, new MiniMaxAi());
 		return current.run();
 	}
 	

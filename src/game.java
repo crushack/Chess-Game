@@ -42,7 +42,7 @@ public class game {
 		this.stdin = stdin;
 		gameBoard = new board(board.initialState());
 		fileLog = new PrintWriter(new FileWriter(settings.LOG_FILE,true));
-		color = 0;
+		color = 1;
 		forced = false;
 		numMoves = 0;
 		
@@ -100,8 +100,12 @@ public class game {
 	
 	public int eventWhite( String event ) {
 		color = 0;
-		stdProtocol.message("e2e4", fileLog);
+		
+		move nextMove = ChessBot.think(gameBoard, color);
+		stdProtocol.message("move " + nextMove.getMove(), fileLog);
+		gameBoard.move(nextMove);
 		++ numMoves;
+		
 		return EVENT_WHITE;
 	}
 	
@@ -142,8 +146,7 @@ public class game {
 		++ numMoves;
 		
 		if ( !forced ) {
-			ArrayList<move> possibleMoves = gameBoard.getPossibleMoves(1);
-			nextMove = possibleMoves.get( (int)(Math.random() * possibleMoves.size()) );
+			nextMove = ChessBot.think(gameBoard, color);
 			stdProtocol.message("move " + nextMove.getMove(), fileLog);
 			gameBoard.move(nextMove);
 			++ numMoves;
