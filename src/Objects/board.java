@@ -171,11 +171,32 @@ public class board {
 		char[] line = map[ dest.x ].toCharArray();
 		line[ dest.y ] = map[ source.x ].charAt(source.y);
 		
+		// TODO: stupid
+		if ( line[dest.y] == 'p' && ( dest.x == 0 || dest.x == settings.BOARD_SIZE ))
+			line[dest.y] = 'q'; 
+		
+		if ( line[dest.y] == 'P' && ( dest.x == 0 || dest.x == settings.BOARD_SIZE ))
+			line[dest.y] = 'Q'; 
+		
 		map[ dest.x ] = new String(line);
 		
 		line = map[ source.x ].toCharArray();
 		line[ source.y ] = settings.FREE_CHELL;
 		
+		// castling
+		if ( (map[source.x].charAt(source.y) == 'K' || map[source.x].charAt(source.y) == 'k' ) &&
+			 ( (source.x == dest.x && Math.abs(source.y - dest.y) == 2) ||
+			   (source.y == dest.y && Math.abs(source.x - dest.x) == 2)	)) {
+			if ( source.y > dest.y ) { // buhuhu
+				line[source.y - 1] = line[0];
+				line[0] = settings.FREE_CHELL;
+			} else {
+				line[source.y + 1] = line[settings.BOARD_SIZE - 1];
+				line[settings.BOARD_SIZE - 1] = settings.FREE_CHELL;
+			}
+		}
+			
+			
 		map[ source.x ] = new String(line);
 		
 		moved[ source.x ][ source.y ] = false;

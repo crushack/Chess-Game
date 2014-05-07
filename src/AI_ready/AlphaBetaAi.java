@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import settings.settings;
 import Objects.board;
 import Objects.helper;
 import Objects.move;
-import settings.settings;
 
-public class MiniMaxAi implements brain {
+public class AlphaBetaAi implements brain {
 
 	private static final int pawn_score = 1;
 	private static final int knight_score = 41;
@@ -109,10 +109,10 @@ public class MiniMaxAi implements brain {
 		return ret;
 	}
 	
-	private int mini( int depth, board state, int color ) {
+	private int mini( int depth, int alpha, int beta, board state, int color ) {
 		if ( depth <= 0 ) return - dumb_heuristic(state, color);
 		
-		int ret = settings.INFINITE, val;
+		int val;
 		ArrayList<move> possibleMoves = state.getPossibleMoves(color);
 		Collections.shuffle(possibleMoves, new Random(System.nanoTime()));
 		
@@ -124,18 +124,23 @@ public class MiniMaxAi implements brain {
 			if ( helper.isCheck(nState, color) )
 				continue;
 			
-			val = maxi( depth - 1, nState, 1 - color );
-			ret = Math.min(ret, val);
+			val = maxi( depth - 1, alpha, beta, nState, 1 - color );
+			
+			if ( val <= alpha )
+				return alpha;
+			if ( val < beta )
+				beta = val;
+			
 		}
 		
-		return ret;
+		return beta;
 	}
 	
-	private int maxi( int depth, board state, int color ) {
+	private int maxi( int depth, int alpha, int beta, board state, int color ) {
 		
 		if ( depth <= 0 ) return dumb_heuristic(state, color);
 		
-		int ret = - settings.INFINITE, val;
+		int val;
 		ArrayList<move> possibleMoves = state.getPossibleMoves(color);
 		Collections.shuffle(possibleMoves, new Random(System.nanoTime()));
 		
@@ -147,20 +152,24 @@ public class MiniMaxAi implements brain {
 			if ( helper.isCheck(nState, color) )
 				continue;
 			
-			val = mini( depth - 1, nState, 1 - color );
-			ret = Math.max(ret, val);
-			if ( depth == settings.MAX_DEPTH && ret == val )
+			val = mini( depth - 1, alpha, beta, nState, 1 - color );
+			if ( val >= beta ) 
+				return beta;
+			if ( val > alpha )
+				alpha = val;
+			
+			if ( depth == settings.MAX_DEPTH && alpha == val )
 				nextMove = m;
 		}
 		
-		return ret;
+		return alpha;
 	}
 	
 	@Override
 	public move think(board state, int color) {
 		
 		nextMove = null;
-		maxi( settings.MAX_DEPTH, state, color);
+		maxi( settings.MAX_DEPTH, - settings.INFINITE, settings.INFINITE, state, color);
 		return nextMove;
 	}
 

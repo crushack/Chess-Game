@@ -142,8 +142,9 @@ public class game {
 		
 		move nextMove = move.convertOutput(event);
 		gameBoard.move(nextMove);
-		//gameBoard.flip();
 		++ numMoves;
+		
+		//board.printBoard(gameBoard);
 		
 		if ( !forced ) {
 			nextMove = ChessBot.think(gameBoard, color);
@@ -174,8 +175,9 @@ public class game {
 			return eventQuit(event);
 		else if ( event.startsWith("resign"))
 			return eventResign(event);
-		else if ( 'a' <= event.charAt(0) && event.charAt(0) <= 'h' &&
-				  '1' <= event.charAt(1) && event.charAt(1) <= '8' )
+		else if ( ('a' <= event.charAt(0) && event.charAt(0) <= 'h' &&
+				  '1' <= event.charAt(1) && event.charAt(1) <= '8') || 
+				   event.charAt(0) == 'O')
 			return eventMove(event);
 			
 		stdProtocol.message("Error (ambiguous move): " + event, fileLog);
