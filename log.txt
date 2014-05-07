@@ -266,3 +266,10 @@
 [Thu May 08 10:46:35 EEST 2014]# e5e6
 [Thu May 08 10:46:35 EEST 2014]$ move g8f6
 [Thu May 08 10:46:41 EEST 2014]# null
+[Thu May 08 10:48:21 EEST 2014]# e2e4
+[Thu May 08 10:48:22 EEST 2014]$ move c7c6
+[Thu May 08 10:48:26 EEST 2014]# e4e5
+[Thu May 08 10:48:27 EEST 2014]$ move g8f6
+[Thu May 08 10:48:34 EEST 2014]# e5e6
+[Thu May 08 10:48:36 EEST 2014]$ move c6c5
+[Thu May 08 10:48:40 EEST 2014]# null

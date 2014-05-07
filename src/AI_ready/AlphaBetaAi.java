@@ -10,21 +10,13 @@ import Objects.helper;
 import Objects.move;
 
 public class AlphaBetaAi implements brain {
-
+	
 	private static final int pawn_score = 1;
-	private static final int knight_score = 41;
-	private static final int bishop_score = 57;
-	private static final int rook_score = 501;
-	private static final int queen_score = 997;
-	private static final int king_score = 1500;
-	
-	
-	private static final int pawn_multiplier = 1;
-	private static final int knight_multiplier = 3;
-	private static final int bishop_multiplier = 3;
-	private static final int rook_multiplier = 5;
-	private static final int queen_multiplier = 9;
-	private static final int king_multiplier = 200;
+	private static final int knight_score = 3;
+	private static final int bishop_score = 3;
+	private static final int rook_score = 5;
+	private static final int queen_score = 9;
+	private static final int king_score = 200;
 	
 	private move nextMove;
 	
@@ -110,7 +102,7 @@ public class AlphaBetaAi implements brain {
 	}
 	
 	private int mini( int depth, int alpha, int beta, board state, int color ) {
-		if ( depth <= 0 ) return - dumb_heuristic(state, color);
+		if ( depth <= 0 ) return - medium_heuristic(state, color);
 		
 		int val;
 		ArrayList<move> possibleMoves = state.getPossibleMoves(color);
@@ -138,7 +130,7 @@ public class AlphaBetaAi implements brain {
 	
 	private int maxi( int depth, int alpha, int beta, board state, int color ) {
 		
-		if ( depth <= 0 ) return dumb_heuristic(state, color);
+		if ( depth <= 0 ) return medium_heuristic(state, color);
 		
 		int val;
 		ArrayList<move> possibleMoves = state.getPossibleMoves(color);
